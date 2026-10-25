@@ -68,15 +68,39 @@ h1,h2,h3,p{margin:0}
 @keyframes spinAng{to{--ang:360deg}}
 
 /* NAV */
-.nav-wrap{position:sticky;top:0;z-index:40;padding:14px 16px 0;transition:transform .4s var(--ease)}
-.nav{max-width:var(--wrap);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 8px 8px 20px;border:1px solid var(--line-d);border-radius:999px;background:rgba(7,8,10,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2)}
+.nav-wrap{position:sticky;top:0;z-index:40;padding:14px 16px 0;transition:transform .45s var(--ease)}
+.nav-wrap.up{transform:translateY(-110%)}
+.nav{position:relative;max-width:var(--wrap);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 8px 8px 20px;border:1px solid var(--line-d);border-radius:999px;background:rgba(7,8,10,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);overflow:hidden}
+.nav-prog{position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,var(--em),var(--am));transform-origin:left;transform:scaleX(0);opacity:.9}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:21px;letter-spacing:-.03em}
 .brand b{color:var(--em);font-weight:600}
-.nav-links{display:flex;gap:26px;font-size:15px}
-.nav-links a{color:var(--mu-d);text-decoration:none;transition:color .2s}
+.nav-links{position:relative;display:flex;gap:2px;font-size:15px;padding:4px;border-radius:999px}
+.nav-links a{position:relative;z-index:1;color:var(--mu-d);text-decoration:none;padding:8px 14px;border-radius:999px;transition:color .25s}
 .nav-links a:hover{color:var(--tx-d)}
+.nav-links a.on{color:var(--tx-d)}
+.nav-pill{position:absolute;z-index:0;top:4px;height:calc(100% - 8px);border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);transition:left .45s var(--ease),width .45s var(--ease),opacity .3s;opacity:0}
 .nav .btn{min-height:44px;padding:0 20px;font-size:15px}
-@media (max-width:860px){.nav-links{display:none}}
+.burger{display:none;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger i{display:block;width:18px;height:2px;border-radius:2px;background:var(--tx-d);transition:transform .35s var(--ease),opacity .25s}
+.burger i:nth-child(2){width:12px;align-self:flex-end;margin-right:13px}
+@media (max-width:1060px){.nav-links a{padding:8px 10px;font-size:14px}}
+@media (max-width:900px){.nav-links,.nav .btn{display:none}.burger{display:flex}}
+/* menu do celular */
+.sheet-m{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;background:rgba(7,8,10,.96);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:18px 20px calc(24px + env(safe-area-inset-bottom));opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility 0s .35s}
+.sheet-m.open{opacity:1;visibility:visible;transition:opacity .35s var(--ease)}
+.sheet-top{display:flex;align-items:center;justify-content:space-between;padding:6px 4px 6px 12px}
+.sheet-close{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.sheet-links{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;flex:1;overflow-y:auto}
+.sheet-links a{display:flex;align-items:baseline;gap:16px;padding:15px 8px;border-bottom:1px solid rgba(255,255,255,.07);text-decoration:none;opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.sheet-m.open .sheet-links a{opacity:1;transform:none}
+.sheet-links .n{font-family:var(--mono);font-size:12px;color:var(--em);width:22px;flex:none}
+.sheet-links b{display:block;font-size:26px;font-weight:500;letter-spacing:-.02em;color:var(--tx-d)}
+.sheet-links small{display:block;font-size:14px;color:var(--mu-d);margin-top:2px}
+.sheet-links a.on b{color:var(--em)}
+.sheet-cta{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.sheet-cta .btn{width:100%}
+body.lock{overflow:hidden}
+.sheet-m[hidden]{display:none}
 
 /* HERO */
 .hero{position:relative;overflow:hidden;margin-top:-72px;padding-top:72px}
@@ -117,7 +141,7 @@ h1,h2,h3,p{margin:0}
 .chip{display:flex;align-items:center;gap:8px;white-space:nowrap;background:rgba(14,16,19,.92);border:1px solid;border-radius:999px;padding:8px 14px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.5);animation:rot 46s linear infinite reverse}
 .chip b{width:8px;height:8px;border-radius:50%;flex:none}
 .cs,.emc{display:none}
-@media (max-width:640px){.hero-in{padding-top:56px;padding-bottom:80px;gap:28px}.dial{width:min(76vw,330px);margin:14px 0}.core small{font-size:9px;letter-spacing:.12em}.core strong{font-size:21px}.core em{font-size:11px}.core i{font-size:10px}.slot{inset:9%}.core{inset:27%}.core strong{font-size:20px}.core em{font-size:10.5px}.cl{display:none}.cs{display:inline}.ems{display:none}.emc{display:inline}.step{flex-wrap:wrap}.step em{margin-left:56px}}
+@media (max-width:640px){.hero-in{padding-top:56px;padding-bottom:44px;gap:24px}.dial{width:min(76vw,330px);margin:14px 0}.core small{font-size:9px;letter-spacing:.12em}.core strong{font-size:21px}.core em{font-size:11px}.core i{font-size:10px}.slot{inset:9%}.core{inset:27%}.core strong{font-size:20px}.core em{font-size:10.5px}.cl{display:none}.cs{display:inline}.ems{display:none}.emc{display:inline}.step{flex-wrap:wrap}.step em{margin-left:56px}}
 
 /* MARQUEE */
 .marquee{border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);overflow:hidden;padding:22px 0}
@@ -279,6 +303,48 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .tk2{animation:tk 8s infinite}
 @keyframes tk{0%,44%{color:#A1A1AA}46%,100%{color:#34D399}}
 @media (prefers-reduced-motion:reduce){.sq1,.sq2,.sq4{opacity:1!important}.sq3{display:none}}
+
+/* linha do tempo */
+.timeline{list-style:none;margin:0 0 22px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;counter-reset:t}
+.timeline li{position:relative;background:var(--card);border:1px solid var(--line-l);border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.timeline li.now{background:#ECFDF5;border-color:#A7F3D0}
+.timeline em{font-style:normal;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--em-d)}
+.timeline b{font-weight:600;font-size:16px;line-height:1.3}
+.timeline li:not(:last-child)::after{content:"";position:absolute;right:-9px;top:50%;width:8px;height:8px;border-top:2px solid #C9C0B0;border-right:2px solid #C9C0B0;transform:translateY(-50%) rotate(45deg);z-index:1}
+@media (max-width:760px){.timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.timeline li::after{display:none}}
+/* chamadas */
+.link-cta{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-weight:600;color:var(--tx-l);text-decoration:none;border-bottom:2px solid var(--am);padding-bottom:3px}
+.link-cta span{transition:transform .3s var(--ease)}.link-cta:hover span{transform:translateX(4px)}
+.swipe-hint{display:none;font-size:13px;color:var(--mu-l);margin-top:10px}
+.seg-cta{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;margin-top:22px;background:var(--card);border:1px solid var(--line-l);border-radius:22px;padding:20px 24px}
+.seg-cta p{flex:999 1 320px;color:var(--mu-l);font-size:16px;line-height:1.5}.seg-cta p b{color:var(--tx-l)}
+/* abas de planos (celular) */
+.plan-tabs{display:none}
+/* dúvidas */
+.faq{padding-top:60px;padding-bottom:110px}
+.faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+@media (max-width:760px){.faq-grid{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .cards4{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -20px;padding:4px 20px 8px;scrollbar-width:none}
+  .cards4::-webkit-scrollbar{display:none}
+  .cards4 .card{flex:0 0 80%;scroll-snap-align:start}
+  .swipe-hint{display:block}
+  .seg-photo{min-height:340px}
+  .seg-list{display:none}
+  .sstep small{display:none}
+  .timeline li{padding:12px 14px}.timeline b{font-size:15px}
+  .seg-dash .chart-bars{height:80px}
+  .send-demo{min-height:0;padding:22px}.chat{padding:0}
+  .sstep{padding:20px}.sstep .n{font-size:40px;width:28px}.sstep p{font-size:15px}
+  .seg-cta{padding:18px}
+  .plan-tabs{display:flex;gap:4px;background:#fff;border:1px solid var(--line-l);border-radius:999px;padding:4px;margin-bottom:16px}
+  .plan-tabs button{flex:1;min-height:44px;border:0;border-radius:999px;background:transparent;font-size:14px;font-weight:600;color:var(--mu-l);cursor:pointer;transition:background .3s,color .3s}
+  .plan-tabs button[aria-selected=true]{background:var(--tx-l);color:var(--tx-d)}
+  .plans>[data-p]{display:none}
+  .plans[data-active=ess]>[data-p=ess],.plans[data-active=loja]>[data-p=loja],.plans[data-active=rede]>[data-p=rede]{display:flex;animation:planIn .45s var(--ease)}
+  .plans>.plan[data-p]{flex-direction:column}
+}
+@keyframes planIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 /* planos */
 .plans-head{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:28px}
 .badge-green{flex:1 1 260px;max-width:440px;display:inline-flex;align-items:center;gap:10px;background:#D1FAE5;color:#065F46;border-radius:16px;padding:14px 18px;font-size:15px;font-weight:500;line-height:1.4}
@@ -367,11 +433,35 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
       <svg width="36" height="36" aria-hidden="true" viewBox="60 38 392 392"><defs><linearGradient id="gaNav" x1="0" y1="1" x2="1" y2="0" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#047857"/><stop offset=".55" stop-color="#10B981"/><stop offset="1" stop-color="#6EE7B7"/></linearGradient></defs><path d="M352.4 141.1 A150 150 0 1 1 282.0 108.3" fill="none" stroke="url(#gaNav)" stroke-width="36" stroke-linecap="round"/><rect class="" x="180.4" y="278.0" width="38" height="78" rx="16" fill="#F4F2EE"/><rect class="" x="240.4" y="224.0" width="38" height="132" rx="16" fill="#F4F2EE"/><rect x="300.4" y="120" width="38" height="236" rx="16" fill="#FBBF24"/><path d="M319.4 58 L363.4 124 L275.4 124 Z" fill="#FBBF24" stroke="#FBBF24" stroke-width="10" stroke-linejoin="round"/></svg>
       <span>giro<b>.</b></span>
     </a>
-    <div class="nav-links">
-      <a href="#luz">Antes e depois</a><a href="#simulador">Simulador</a><a href="#ramos">Ramos</a><a href="#enviar">Diagnóstico grátis</a><a href="#planos">Planos</a>
+    <div class="nav-links" id="navLinks">
+      <span class="nav-pill" id="navPill" aria-hidden="true"></span>
+      <a href="#luz">Antes e depois</a><a href="#simulador">Simulador</a><a href="#ramos">Ramos</a><a href="#enviar">Como começar</a><a href="#planos">Planos</a><a href="#duvidas">Dúvidas</a>
     </div>
-    <a class="btn btn-light" href="#contato">Quero meu painel</a>
+    <a class="btn btn-light" href="#enviar">Diagnóstico grátis</a>
+    <button class="burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuM"><i></i><i></i><i></i></button>
+    <span class="nav-prog" id="navProg" aria-hidden="true"></span>
   </nav>
+</div>
+
+<div class="sheet-m" id="menuM" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="sheet-top"><a class="brand" href="#topo" data-close aria-label="giro, início">
+      <svg width="36" height="36" aria-hidden="true" viewBox="60 38 392 392"><defs><linearGradient id="gaNavM" x1="0" y1="1" x2="1" y2="0" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#047857"/><stop offset=".55" stop-color="#10B981"/><stop offset="1" stop-color="#6EE7B7"/></linearGradient></defs><path d="M352.4 141.1 A150 150 0 1 1 282.0 108.3" fill="none" stroke="url(#gaNavM)" stroke-width="36" stroke-linecap="round"/><rect class="" x="180.4" y="278.0" width="38" height="78" rx="16" fill="#F4F2EE"/><rect class="" x="240.4" y="224.0" width="38" height="132" rx="16" fill="#F4F2EE"/><rect x="300.4" y="120" width="38" height="236" rx="16" fill="#FBBF24"/><path d="M319.4 58 L363.4 124 L275.4 124 Z" fill="#FBBF24" stroke="#FBBF24" stroke-width="10" stroke-linejoin="round"/></svg>
+      <span>giro<b>.</b></span>
+    </a>
+    <button class="sheet-close" type="button" id="menuClose" aria-label="Fechar menu"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="#F4F2EE" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <ul class="sheet-links">
+    <li><a href="#luz" data-close style="transition-delay:.04s"><span class="n">01</span><span><b>Antes e depois</b><small>Acenda a luz da sua loja</small></span></a></li>
+    <li><a href="#simulador" data-close style="transition-delay:.08s"><span class="n">02</span><span><b>Simulador</b><small>Quanto está dormindo no seu estoque</small></span></a></li>
+    <li><a href="#ramos" data-close style="transition-delay:.12s"><span class="n">03</span><span><b>Ramos</b><small>Moda, mercado, farmácia, pet e mais</small></span></a></li>
+    <li><a href="#enviar" data-close style="transition-delay:.16s"><span class="n">04</span><span><b>Como começar</b><small>Diagnóstico grátis em 48 horas</small></span></a></li>
+    <li><a href="#planos" data-close style="transition-delay:.2s"><span class="n">05</span><span><b>Planos</b><small>A partir de R$ 1.700, pagamento único</small></span></a></li>
+    <li><a href="#duvidas" data-close style="transition-delay:.24s"><span class="n">06</span><span><b>Dúvidas</b><small>Sistema, dados, treinamento</small></span></a></li>
+  </ul>
+  <div class="sheet-cta">
+    <a class="btn btn-amber js-wa" data-close data-msg="Olá! Quero o diagnóstico grátis da minha planilha." href="#enviar">Quero meu diagnóstico grátis</a>
+    <span style="text-align:center;font-size:13px;color:var(--mu-d)">Marcos Lima e Fernando Henrique · Taboão da Serra e Sorocaba, SP</span>
+  </div>
 </div>
 
 <main>
@@ -486,7 +576,10 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
         </div>
       </div>
     </div>
-    <p class="note">Planilha e painel ilustrativos, com números fictícios.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between">
+      <p class="note">Planilha e painel ilustrativos, com números fictícios.</p>
+      <a class="btn btn-amber" href="#enviar">Quero ver a minha loja assim</a>
+    </div>
   </div>
 </section>
 
@@ -497,12 +590,14 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
       <span class="kicker" style="color:var(--ro-d)" data-reveal>As 4 perdas invisíveis</span>
       <h2 class="h2" data-reveal="2">O dinheiro não some de uma vez. <span class="it">Ele vaza.</span></h2>
     </div>
-    <div class="cards4">
+    <div class="cards4" id="perdas">
       <article class="card" data-reveal><span class="n" style="color:var(--ro-d)">01</span><h3>Estoque dormindo</h3><p>Dinheiro que você já pagou, parado na prateleira e ocupando o lugar do que vende.</p></article>
       <article class="card" data-reveal="2"><span class="n" style="color:var(--am-d)">02</span><h3>Produto que falta</h3><p>O cliente pediu, você não tinha, e ele foi ao concorrente. Essa venda não aparece em planilha nenhuma.</p></article>
       <article class="card" data-reveal="3"><span class="n" style="color:var(--in)">03</span><h3>Promoção no escuro</h3><p>Desconto no que já vendia sozinho, no dia em que a loja já enche. Margem jogada fora.</p></article>
       <article class="card" data-reveal="4"><span class="n" style="color:var(--em-d)">04</span><h3>Equipe sem número</h3><p>Sem saber quem vende mais e com que ticket, não dá para premiar, treinar nem acertar a escala.</p></article>
     </div>
+    <div class="swipe-hint" aria-hidden="true">Deslize para ver as 4 <span>→</span></div>
+    <a class="link-cta" href="#simulador">Descobrir quanto estou perdendo <span>→</span></a>
   </section>
 
   <!-- ================= SIMULADOR ================= -->
@@ -551,6 +646,7 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
         <div class="alert"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex:none;margin-top:1px"><path d="M12 3 2 21h20L12 3z" stroke="#FB7185" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M12 10v5M12 18v.5" stroke="#FB7185" stroke-width="1.8" stroke-linecap="round"/></svg><span class="fade-swap" id="segAlert"></span></div>
       </div>
     </div>
+    <div class="seg-cta" data-reveal><p>Viu a sua loja aqui? O diagnóstico grátis mostra isso com os <b>seus</b> números.</p><a class="btn btn-amber" id="segCta" target="_blank" rel="noopener" href="#enviar">Quero o diagnóstico para <span id="segCtaName">moda</span></a></div>
   </section>
 
   <!-- ================= ENVIAR PLANILHA ================= -->
@@ -560,6 +656,12 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
       <h2 class="h2" data-reveal="2">Como mandar sua planilha em <span class="it">2 minutos.</span></h2>
       <p class="lead" style="color:var(--mu-l)" data-reveal="3">Sem cadastro e sem formulário. Do jeito que a planilha estiver.</p>
     </div>
+    <ol class="timeline" data-reveal>
+      <li class="now"><em>Hoje</em><b>Você manda a planilha</b></li>
+      <li><em>48 horas</em><b>Diagnóstico grátis</b></li>
+      <li><em>7 a 15 dias</em><b>Painel pronto e aprovado</b></li>
+      <li><em>Sempre</em><b>Você acompanha no celular</b></li>
+    </ol>
     <div class="send">
       <div class="send-steps">
         <article class="sstep" data-reveal><span class="n">1</span><div><h3>Separe o arquivo</h3><p>A planilha onde você anota as vendas, de preferência com os últimos 3 meses. Pode estar bagunçada: organizar é com a gente.</p><small><span>Excel</span><span>Google Planilhas</span><span>CSV</span></small></div></article>
@@ -594,16 +696,12 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
       <span class="badge-green" data-reveal="3"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex:none"><path d="M20 12l-8 8-9-9V3h8z" stroke="#065F46" stroke-width="2" fill="none" stroke-linejoin="round"/><circle cx="7.5" cy="7.5" r="1.5" fill="#065F46"/></svg>Preços 15% abaixo da média de mercado para painéis de dados em 2026</span>
     </div>
 
-    <div class="diag" data-reveal>
-      <div>
-        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="#17140F" stroke-width="2.2" fill="none"/><path d="M16 16l4.5 4.5" stroke="#17140F" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-        <div><h3>Comece pelo diagnóstico grátis</h3><p>Mande sua planilha e, em até 48 horas, mostramos 3 coisas que ela esconde. Sem compromisso, sem custo.</p></div>
-      </div>
-      <a class="btn btn-amber js-wa" data-msg="Olá! Quero o diagnóstico grátis da minha planilha." href="#contato">Quero meu diagnóstico</a>
-    </div>
 
-    <div class="plans">
-      <article class="plan" data-reveal>
+    <div class="plan-tabs" role="tablist" aria-label="Planos" id="planTabs">
+      <button type="button" role="tab" data-p="ess" aria-selected="false">Essencial</button><button type="button" role="tab" data-p="loja" aria-selected="true">Loja Completa</button><button type="button" role="tab" data-p="rede" aria-selected="false">Rede</button>
+    </div>
+    <div class="plans" id="plans" data-active="loja">
+      <article class="plan" data-p="ess" data-reveal>
         <div><h3>Essencial</h3><p class="sub">Para quem quer começar a enxergar</p></div>
         <div><div class="price">R$ 1.700</div><p class="price-note">pagamento único · média de mercado R$ 2.000</p></div>
         <ul>
@@ -614,7 +712,7 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
         </ul>
         <a class="btn btn-line js-wa" data-msg="Olá! Tenho interesse no plano Essencial." href="#contato">Começar pelo Essencial</a>
       </article>
-      <div class="plan-hl" data-reveal="2">
+      <div class="plan-hl" data-p="loja" data-reveal="2">
         <article class="plan">
           <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><h3>Loja Completa</h3><p class="sub">Ideal para uma loja</p></div><span class="rec">Recomendado</span></div>
           <div><div class="price">R$ 2.930</div><p class="price-note">pagamento único · média de mercado R$ 3.450</p></div>
@@ -627,7 +725,7 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
           <a class="btn btn-amber js-wa" data-msg="Olá! Tenho interesse no plano Loja Completa." href="#contato">Quero a Loja Completa</a>
         </article>
       </div>
-      <article class="plan" data-reveal="3">
+      <article class="plan" data-p="rede" data-reveal="3">
         <div><h3>Rede</h3><p class="sub">Mais de uma loja ou várias fontes</p></div>
         <div><div class="price">R$ 4.675</div><p class="price-note">pagamento único · média de mercado R$ 5.500</p></div>
         <ul>
@@ -645,20 +743,18 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
     </div>
   </section>
 
-  <!-- ================= COMO FUNCIONA + FAQ ================= -->
-  <section class="wrap duo" style="padding-top:50px">
+  <!-- ================= DÚVIDAS ================= -->
+  <section class="wrap faq" id="duvidas">
     <div class="box" data-reveal>
-      <h2>Como <span class="it">funciona</span></h2>
-      <div class="step first"><span class="num" style="background:#047857;color:#fff">1</span><div><b>Você nos manda a planilha</b><small>Do jeito que está, mesmo bagunçada</small></div><em style="background:#D1FAE5;color:#065F46">Hoje</em></div>
-      <div class="step"><span class="num" style="background:#FEF3C7;color:#92400E">2</span><div><b>Organizamos e montamos o painel</b><small>Você aprova antes de usar</small></div><em style="background:#FEF3C7;color:#92400E">7 a 15 dias</em></div>
-      <div class="step"><span class="num" style="background:#E0E7FF;color:#3730A3">3</span><div><b>Você acompanha no celular</b><small>Atualiza a cada venda lançada</small></div><em style="background:#E0E7FF;color:#3730A3">Sempre</em></div>
-    </div>
-    <div class="box" data-reveal="2">
       <h2>Perguntas <span class="it">frequentes</span></h2>
+      <div class="faq-grid">
       <details open><summary>Preciso ter um sistema de vendas?</summary><p>Não. Uma planilha de vendas já basta. Se você tiver um sistema, usamos o relatório exportado dele.</p></details>
       <details><summary>Minha planilha é uma bagunça. Serve?</summary><p>Serve. Organizar faz parte do serviço, e você sai com uma planilha padrão, mais fácil de preencher.</p></details>
-      <details><summary>Meus dados ficam seguros?</summary><p>Sim. O painel abre só para quem você autorizar, e os dados não são usados para nada além dele.</p></details>
+      <details><summary>Meus dados ficam seguros?</summary><p>Sim. O painel abre só para quem você autorizar. Seus dados são usados só para montar o seu painel, não são compartilhados com ninguém e são apagados quando você pedir, como prevê a LGPD.</p></details>
       <details><summary>Como é o treinamento?</summary><p>Presencial, na sua loja. Mostramos como lançar as vendas, como ler o painel e o que fazer com cada número. Você também recebe um vídeo e um guia impresso para consultar depois.</p></details>
+      <details><summary>Quanto tempo leva?</summary><p>O diagnóstico grátis sai em até 48 horas. O painel completo fica pronto entre 7 e 15 dias, conforme o plano.</p></details>
+      <details><summary>Atendem a minha cidade?</summary><p>Estamos em Taboão da Serra e Sorocaba (SP). O painel e o diagnóstico funcionam a distância para qualquer cidade; o treinamento presencial combinamos caso a caso.</p></details>
+      </div>
     </div>
   </section>
 </div>
@@ -780,42 +876,42 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
   /* Ramos */
   const G = 'linear-gradient(180deg,#34D399,#047857)', M = '#2A2E35', A = '#FBBF24', R = '#FB7185';
   const SEGS = [
-    { id: 'moda', nome: 'Moda', img: 'giro-moda.webp', alt: 'Loja de roupas com araras, calças dobradas e sapatos em prateleiras', tint: '#FCE7F3', ink: '#9D174D',
+    { id: 'moda', art: 'uma loja de', nome: 'Moda', img: 'giro-moda.webp', alt: 'Loja de roupas com araras, calças dobradas e sapatos em prateleiras', tint: '#FCE7F3', ink: '#9D174D',
       ico: 'M12 6a2 2 0 1 1 2 2c-1 .5-2 1-2 2v1M12 11L3 17.5h18z',
       dor: 'A coleção passada ocupa a vitrine e o caixa, e eu só percebo na liquidação.',
       itens: ['Peças dormindo há mais de 30 dias, por tamanho e cor', 'Quais vendedores convertem mais e com que ticket', 'O dia e o horário em que a loja realmente vende'],
       kpis: [['Peças paradas', '148'], ['Ticket médio', 'R$ 182'], ['Melhor dia', 'Sábado']],
       grafico: 'VENDAS POR DIA DA SEMANA', barras: [[38, M], [42, M], [40, M], [51, M], [70, M], [100, G], [24, M]],
       alerta: 'Jaqueta corta-vento: 23 peças sem venda há 45 dias' },
-    { id: 'mercado', nome: 'Mercadinho', img: 'giro-mercado.webp', alt: 'Corredor de mercado com prateleiras cheias de arroz e grãos', tint: '#FEF3C7', ink: '#92400E',
+    { id: 'mercado', art: 'um', nome: 'Mercadinho', img: 'giro-mercado.webp', alt: 'Corredor de mercado com prateleiras cheias de arroz e grãos', tint: '#FEF3C7', ink: '#92400E',
       ico: 'M3 4h3l2.5 11h10L21 8H8M10 20h.01M18 20h.01',
       dor: 'O que mais gira acaba no fim de semana e o cliente compra no vizinho.',
       itens: ['Itens com risco de faltar antes da próxima entrega', 'Margem por categoria, não só faturamento', 'Produtos perto do vencimento que precisam de oferta já'],
       kpis: [['Risco de faltar', '12 itens'], ['Margem média', '21%'], ['Vencem em 7 dias', '37']],
       grafico: 'MARGEM POR CATEGORIA', barras: [[92, G], [74, M], [66, M], [58, M], [40, M], [33, M], [18, R]],
       alerta: 'Leite integral acaba na sexta no ritmo atual' },
-    { id: 'farmacia', nome: 'Farmácia', img: 'giro-farmacia.webp', alt: 'Prateleiras de farmácia com caixas e frascos de remédios', tint: '#D1FAE5', ink: '#065F46',
+    { id: 'farmacia', art: 'uma', nome: 'Farmácia', img: 'giro-farmacia.webp', alt: 'Prateleiras de farmácia com caixas e frascos de remédios', tint: '#D1FAE5', ink: '#065F46',
       ico: 'M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z',
       dor: 'Faltou o remédio de uso contínuo e o cliente fiel mudou de farmácia.',
       itens: ['Clientes de uso contínuo que não voltaram no mês', 'Estoque mínimo dos medicamentos de maior saída', 'Vendas por balconista e por convênio'],
       kpis: [['Clientes sumidos', '64'], ['Abaixo do mínimo', '19'], ['Receitas no mês', '412']],
       grafico: 'CLIENTES DE USO CONTÍNUO POR MÊS', barras: [[80, M], [84, M], [82, M], [79, M], [71, M], [66, R], [60, R]],
       alerta: '64 clientes de uso contínuo não compraram este mês' },
-    { id: 'pet', nome: 'Pet shop', img: 'giro-pet.webp', alt: 'Gato sentado sobre sacos de ração empilhados em um pet shop', tint: '#E0E7FF', ink: '#3730A3',
+    { id: 'pet', art: 'um', nome: 'Pet shop', img: 'giro-pet.webp', alt: 'Gato sentado sobre sacos de ração empilhados em um pet shop', tint: '#E0E7FF', ink: '#3730A3',
       ico: 'M5 9a1.5 2 0 1 0 3 0a1.5 2 0 1 0-3 0M8.5 6a1.5 2 0 1 0 3 0a1.5 2 0 1 0-3 0M12.5 6a1.5 2 0 1 0 3 0a1.5 2 0 1 0-3 0M16 9a1.5 2 0 1 0 3 0a1.5 2 0 1 0-3 0M12 12c-3 0-5.5 3.5-5.5 5.5 0 1.5 1.2 2.5 2.7 2.5 1.2 0 1.8-.6 2.8-.6s1.6.6 2.8.6c1.5 0 2.7-1 2.7-2.5 0-2-2.5-5.5-5.5-5.5z',
       dor: 'A ração de 15 kg acaba no sábado e o tutor não espera até segunda.',
       itens: ['Quando cada cliente deve voltar para recomprar', 'Horários ociosos da agenda de banho e tosa', 'Produtos que saem juntos, para montar combos'],
       kpis: [['Recompras na semana', '87'], ['Agenda ociosa', '31%'], ['Combo campeão', 'Ração + petisco']],
       grafico: 'OCUPAÇÃO DA AGENDA POR DIA', barras: [[45, M], [38, M], [52, M], [60, M], [78, M], [100, G], [20, R]],
       alerta: '18 tutores devem recomprar ração até sábado' },
-    { id: 'food', nome: 'Lanchonete', img: 'giro-food.webp', alt: 'Hambúrgueres com batata frita servidos em tábuas de madeira', tint: '#FFEDD5', ink: '#9A3412',
+    { id: 'food', art: 'uma', nome: 'Lanchonete', img: 'giro-food.webp', alt: 'Hambúrgueres com batata frita servidos em tábuas de madeira', tint: '#FFEDD5', ink: '#9A3412',
       ico: 'M4 10a8 5 0 0 1 16 0zM3 13h18M4 16h16v1a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z',
       dor: 'Compro insumo no feeling e jogo comida fora toda semana.',
       itens: ['Pratos que mais vendem e os que só dão trabalho', 'Movimento por hora para montar a escala', 'Custo do insumo comparado ao preço de venda'],
       kpis: [['Prato campeão', 'X-tudo'], ['Horário de pico', '19h–21h'], ['Desperdício/mês', 'R$ 1,2 mil']],
       grafico: 'PEDIDOS POR HORA', barras: [[12, M], [30, M], [44, M], [20, M], [26, M], [72, M], [100, A], [64, M]],
       alerta: 'Alface: comprada 40% acima do que foi usado na semana' },
-    { id: 'obra', nome: 'Construção', img: 'giro-obra.webp', alt: 'Estante cheia de tubos e barras de metal', tint: '#E7E5E4', ink: '#44403C',
+    { id: 'obra', art: 'uma loja de', nome: 'Construção', img: 'giro-obra.webp', alt: 'Estante cheia de tubos e barras de metal', tint: '#E7E5E4', ink: '#44403C',
       ico: 'M3 5h18v14H3zM3 9.7h18M3 14.3h18M9 5v4.7M15 5v4.7M6 9.7v4.6M12 9.7v4.6M18 9.7v4.6M9 14.3V19M15 14.3V19',
       dor: 'Tenho capital preso em item pesado que não sai, enquanto falta o básico.',
       itens: ['Curva ABC: os poucos itens que trazem a maior parte da receita', 'Itens dormindo que ocupam espaço e dinheiro', 'Clientes de obra que pararam de comprar'],
@@ -824,7 +920,11 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
       alerta: 'Porcelanato 90×90: R$ 22 mil parados há 120 dias' }
   ];
   const tabs = $('#tabs'), photo = $('#segPhoto');
-  const imgs = SEGS.map((s, i) => { const im = new Image(); im.src = s.img; im.alt = ''; im.loading = i ? 'lazy' : 'eager'; im.decoding = 'async'; photo.prepend(im); return im; });
+  const imgs = SEGS.map(() => { const im = new Image(); im.alt = ''; im.decoding = 'async'; photo.prepend(im); return im; });
+  let photosOn = false;
+  const loadPhoto = i => { if (!imgs[i].src) imgs[i].src = SEGS[i].img; };
+  const loadAll = () => { if (photosOn) return; photosOn = true; SEGS.forEach((_, i) => loadPhoto(i)); };
+  new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { loadAll(); o.disconnect(); } }, { rootMargin: '900px 0px' }).observe(photo);
   const bars = $('#segBars');
   for (let i = 0; i < 8; i++) bars.appendChild(document.createElement('span'));
   const swapTxt = ['#segTxt', '#segItens', '#segKpis', '#segAlert'].map(s => $(s));
@@ -832,7 +932,10 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
   const show = i => {
     if (i === cur) return; const s = SEGS[i]; const first = cur < 0; cur = i;
     [...tabs.children].forEach((b, j) => { b.setAttribute('aria-selected', j === i); b.tabIndex = j === i ? 0 : -1; });
+    loadPhoto(i);
     imgs.forEach((im, j) => { im.classList.toggle('on', j === i); im.alt = j === i ? s.alt : ''; });
+    const segCta = $('#segCta'); $('#segCtaName').textContent = s.nome.toLowerCase();
+    segCta.href = `https://wa.me/${WHATS}?text=${encodeURIComponent(`Olá! Tenho ${s.art} ${s.nome.toLowerCase()} e quero o diagnóstico grátis da minha planilha.`)}`;
     $('#segIcoBg').style.background = s.tint; const ic = $('#segIco'); ic.setAttribute('d', s.ico); ic.setAttribute('stroke', s.ink);
     const fill = () => {
       $('#segName').textContent = s.nome; $('#segDor').textContent = `“${s.dor}”`;
@@ -852,14 +955,54 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
   });
   show(0);
 
-  /* Botão flutuante some no topo e no rodapé */
-  const fl = $('#float'), cta = $('#contato');
-  const onScroll = () => {
-    const y = scrollY, hideTop = y < innerHeight * 0.6;
-    const r = cta.getBoundingClientRect(), hideEnd = r.top < innerHeight && r.bottom > 0;
-    fl.classList.toggle('hide', hideTop || hideEnd);
+  /* Planos: abas no celular */
+  const plans = $('#plans');
+  document.querySelectorAll('#planTabs button').forEach(b => b.addEventListener('click', () => {
+    plans.dataset.active = b.dataset.p;
+    document.querySelectorAll('#planTabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+  }));
+
+  /* Menu do celular */
+  const menu = $('#menuM'), burger = $('#burger');
+  const openMenu = () => { menu.hidden = false; requestAnimationFrame(() => menu.classList.add('open')); document.body.classList.add('lock'); burger.setAttribute('aria-expanded', 'true'); setTimeout(() => $('#menuClose').focus(), 50); };
+  const closeMenu = () => { menu.classList.remove('open'); document.body.classList.remove('lock'); burger.setAttribute('aria-expanded', 'false'); setTimeout(() => { menu.hidden = true; }, 350); };
+  burger.addEventListener('click', openMenu);
+  $('#menuClose').addEventListener('click', () => { closeMenu(); burger.focus(); });
+  menu.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', closeMenu));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('open')) { closeMenu(); burger.focus(); } });
+
+  /* Item ativo no menu, barra de progresso, menu que some ao descer */
+  const secIds = ['luz', 'simulador', 'ramos', 'enviar', 'planos', 'duvidas'];
+  const secs = secIds.map(id => document.getElementById(id));
+  const navA = [...document.querySelectorAll('#navLinks a')], sheetA = [...document.querySelectorAll('.sheet-links a')];
+  const pill = $('#navPill'), prog = $('#navProg'), navWrap = $('#navWrap');
+  let active = -1;
+  const setActive = i => {
+    if (i === active) return; active = i;
+    navA.forEach((a, j) => a.classList.toggle('on', j === i)); sheetA.forEach((a, j) => a.classList.toggle('on', j === i));
+    if (i < 0) { pill.style.opacity = 0; return; }
+    const a = navA[i]; pill.style.opacity = 1; pill.style.left = a.offsetLeft + 'px'; pill.style.width = a.offsetWidth + 'px';
   };
-  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const fl = $('#float'), cta = $('#contato');
+  let lastY = scrollY, ticking = false;
+  const onScroll = () => {
+    ticking = false;
+    const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${h > 0 ? Math.min(1, y / h) : 0})`;
+    const mid = innerHeight * 0.35; let cur = -1;
+    secs.forEach((s, i) => { const r = s.getBoundingClientRect(); if (r.top <= mid && r.bottom > mid) cur = i; });
+    setActive(cur);
+    const goingDown = y > lastY + 6, goingUp = y < lastY - 6;
+    if (goingDown && y > 500 && !menu.classList.contains('open')) navWrap.classList.add('up');
+    if (goingUp || y < 200) navWrap.classList.remove('up');
+    if (goingDown || goingUp) lastY = y;
+    const r = cta.getBoundingClientRect(), hideEnd = r.top < innerHeight && r.bottom > 0;
+    fl.classList.toggle('hide', y < innerHeight * 0.6 || hideEnd);
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener('resize', () => { const i = active; active = -2; setActive(i); }, { passive: true });
+  navA.forEach(a => a.addEventListener('focus', () => navWrap.classList.remove('up')));
+  onScroll();
 })();
 </script>
 </body>
