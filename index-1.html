@@ -171,7 +171,7 @@ body.lock{overflow:hidden}
 .luz.on .sheet{opacity:0;transform:scale(.98);pointer-events:none}
 .luz.on .board{opacity:1;transform:none;pointer-events:auto}
 .sheet{position:relative;border:1px solid var(--line-d);border-radius:24px;overflow:hidden;background:var(--ink-2)}
-.sheet-scroll{overflow-x:auto}
+.sheet-scroll{overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .sheet table{width:100%;min-width:720px;border-collapse:collapse;font-family:var(--mono);font-size:13px;color:var(--mu-d2)}
 .sheet th{background:var(--ink-3);color:var(--mu-d);text-align:left;font-weight:500;padding:12px 16px}
 .sheet td{padding:10px 16px;border-top:1px solid rgba(255,255,255,.05)}
@@ -229,8 +229,8 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .disc{font-size:13px;color:var(--mu-l);margin-top:18px}
 
 /* ramos */
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.tab{min-height:48px;padding:0 20px;border-radius:999px;border:1px solid #D9D2C5;background:transparent;font-size:15px;font-weight:500;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-bottom:24px;max-width:960px}
+.tab{min-height:48px;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:999px;border:1px solid #D9D2C5;background:transparent;font-size:15px;font-weight:500;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
 .tab:hover{border-color:var(--tx-l);background:#fff}
 .tab[aria-selected=true]{background:var(--tx-l);color:var(--tx-d);border-color:var(--tx-l);font-weight:600}
 .seg{display:flex;flex-wrap:wrap;gap:18px;align-items:stretch}
@@ -259,6 +259,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .chart small{font-size:12px;color:var(--em);letter-spacing:.08em;font-weight:500}
 .chart-bars{display:flex;align-items:flex-end;gap:6px;height:104px}
 .chart-bars span{flex:1;border-radius:6px;transition:height .6s var(--ease),background .6s}
+.chart-axis{display:flex;gap:6px;margin-top:-2px}.chart-axis span{flex:1;min-width:0;text-align:center;font-size:11px;line-height:1;color:rgba(244,242,238,.42);white-space:nowrap;letter-spacing:-.01em}.chart-axis span.hl{color:#F4F2EE;font-weight:600}
 .alert{display:flex;gap:10px;align-items:flex-start;background:rgba(251,113,133,.1);border:1px solid rgba(251,113,133,.35);border-radius:12px;padding:12px;font-size:14px;line-height:1.45;color:#FECDD3}
 .fade-swap{transition:opacity .25s}
 .fade-swap.out{opacity:0}
@@ -326,8 +327,9 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
 @media (max-width:760px){.faq-grid{grid-template-columns:1fr}}
 @media (max-width:640px){
-  .cards4{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -20px;padding:4px 20px 8px;scrollbar-width:none}
+  .cards4{display:flex;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;gap:12px;margin:0 -20px;padding:4px 20px 8px;scrollbar-width:none}
   .cards4::-webkit-scrollbar{display:none}
+  .js .cards4 [data-reveal]{opacity:1;transform:none;filter:none;transition:none}
   .cards4 .card{flex:0 0 80%;scroll-snap-align:start}
   .swipe-hint{display:block}
   .seg-photo{min-height:340px}
@@ -337,7 +339,11 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   .seg-dash .chart-bars{height:80px}
   .send-demo{min-height:0;padding:22px}.chat{padding:0}
   .sstep{padding:20px}.sstep .n{font-size:40px;width:28px}.sstep p{font-size:15px}
-  .seg-cta{padding:18px}
+  .seg-cta{padding:18px}.seg-cta .btn,.sim-out .btn{width:100%}
+  .tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.tab{font-size:14px;min-height:46px;padding:0 6px}
+  .ctas{flex-direction:column}.ctas>*{width:100%;justify-content:center}.ctas .shine>span{width:100%;justify-content:center}
+  .luz-cta{width:100%}
+  .sec{padding-top:68px;padding-bottom:28px}.luz .wrap{padding-top:72px;padding-bottom:72px;gap:28px}.faq{padding-top:40px;padding-bottom:80px}
   .plan-tabs{display:flex;gap:4px;background:#fff;border:1px solid var(--line-l);border-radius:999px;padding:4px;margin-bottom:16px}
   .plan-tabs button{flex:1;min-height:44px;border:0;border-radius:999px;background:transparent;font-size:14px;font-weight:600;color:var(--mu-l);cursor:pointer;transition:background .3s,color .3s}
   .plan-tabs button[aria-selected=true]{background:var(--tx-l);color:var(--tx-d)}
@@ -408,7 +414,9 @@ details p{color:#57534E;font-size:15px;line-height:1.6;padding:0 0 14px}
 .cta .shine>span{min-height:62px;padding:0 40px;font-size:18px}
 .sign{color:var(--mu-d);font-size:15px}
 footer{border-top:1px solid var(--line-d)}
-footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;color:var(--mu-d2);font-size:14px}
+footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;align-items:flex-end;line-height:1.55;color:var(--mu-d2);font-size:14px}
+.foot-id{display:flex;flex-direction:column;gap:2px}.foot-brand{color:var(--tx-d,#F4F2EE);font-weight:600;font-size:16px;letter-spacing:-.02em}.foot-brand b{color:var(--em);font-weight:600}.foot-brand span{color:var(--mu-d2);font-weight:400;font-size:14px;letter-spacing:0;margin-left:6px}.foot-note{max-width:34ch}
+.dash-sep{display:inline-block;width:1px;height:.9em;background:currentColor;opacity:.3;margin:0 10px;vertical-align:-1px}
 
 /* botão flutuante */
 .float{position:fixed;right:18px;bottom:18px;z-index:50;width:62px;height:62px;border-radius:50%;padding:2px;text-decoration:none;background:conic-gradient(from var(--ang),rgba(255,255,255,.12) 0deg,rgba(255,255,255,.12) 220deg,var(--am) 290deg,var(--em) 330deg,rgba(255,255,255,.12) 360deg);animation:spinAng 3.4s linear infinite;box-shadow:0 12px 34px rgba(0,0,0,.45),0 0 0 0 rgba(52,211,153,0);transition:transform .35s var(--ease),opacity .35s,box-shadow .35s}
@@ -580,7 +588,7 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between">
       <p class="note">Planilha e painel ilustrativos, com números fictícios.</p>
-      <a class="btn btn-amber" href="#enviar">Quero ver a minha loja assim</a>
+      <a class="btn btn-amber luz-cta" href="#enviar">Quero ver a minha loja assim</a>
     </div>
   </div>
 </section>
@@ -642,9 +650,9 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
         <ul class="fade-swap" id="segItens"></ul>
       </div>
       <div class="seg-dash">
-        <header><span>giro<span style="color:#34D399">.</span> · <span id="segDashName"></span></span><small>exemplo ilustrativo</small></header>
+        <header><span>giro<span style="color:#34D399">.</span><i class="dash-sep" aria-hidden="true"></i><span id="segDashName"></span></span><small>exemplo ilustrativo</small></header>
         <div class="kpis fade-swap" id="segKpis"></div>
-        <div class="chart"><small id="segChart"></small><div class="chart-bars" id="segBars" aria-hidden="true"></div></div>
+        <div class="chart"><small id="segChart"></small><div class="chart-bars" id="segBars" aria-hidden="true"></div><div class="chart-axis" id="segAxis" aria-hidden="true"></div></div>
         <div class="alert"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex:none;margin-top:1px"><path d="M12 3 2 21h20L12 3z" stroke="#FB7185" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M12 10v5M12 18v.5" stroke="#FB7185" stroke-width="1.8" stroke-linecap="round"/></svg><span class="fade-swap" id="segAlert"></span></div>
       </div>
     </div>
@@ -778,7 +786,7 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
 </section>
 </main>
 
-<footer><div class="wrap"><span>giro. · painéis de vendas para lojistas · Marcos Lima e Fernando Henrique · Taboão da Serra e Sorocaba, SP</span><span>Os exemplos desta página são ilustrativos, com números fictícios.</span></div></footer>
+<footer><div class="wrap"><div class="foot-id"><span class="foot-brand">giro<b>.</b> <span>painéis de vendas para lojistas</span></span><span>Marcos Lima e Fernando Henrique</span><span>Taboão da Serra e Sorocaba, SP</span></div><p class="foot-note">Os exemplos desta página são ilustrativos, com números fictícios.</p></div></footer>
 
 <a class="float js-wa" id="float" data-msg="Olá! Vim pelo site do Giro e quero saber mais." href="#contato" aria-label="Conversar com o Giro no WhatsApp" title="Fale com a gente no WhatsApp">
   <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.3 20.7l4.4-1.1A8.8 8.8 0 1 0 12 3.2z" stroke="#34D399" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="8.4" cy="12" r="1.15" fill="#34D399"/><circle cx="12" cy="12" r="1.15" fill="#FBBF24"/><circle cx="15.6" cy="12" r="1.15" fill="#34D399"/></svg></span>
@@ -883,42 +891,42 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
       dor: 'A coleção passada ocupa a vitrine e o caixa, e eu só percebo na liquidação.',
       itens: ['Peças dormindo há mais de 30 dias, por tamanho e cor', 'Quais vendedores convertem mais e com que ticket', 'O dia e o horário em que a loja realmente vende'],
       kpis: [['Peças paradas', '148'], ['Ticket médio', 'R$ 182'], ['Melhor dia', 'Sábado']],
-      grafico: 'VENDAS POR DIA DA SEMANA', barras: [[38, M], [42, M], [40, M], [51, M], [70, M], [100, G], [24, M]],
+      grafico: 'VENDAS POR DIA DA SEMANA', eixo: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'], barras: [[38, M], [42, M], [40, M], [51, M], [70, M], [100, G], [24, M]],
       alerta: 'Jaqueta corta-vento: 23 peças sem venda há 45 dias' },
     { id: 'mercado', art: 'um', nome: 'Mercadinho', img: 'giro-mercado.webp', alt: 'Corredor de mercado com prateleiras cheias de arroz e grãos', tint: '#FEF3C7', ink: '#92400E',
       ico: 'M3 4h3l2.5 11h10L21 8H8M10 20h.01M18 20h.01',
       dor: 'O que mais gira acaba no fim de semana e o cliente compra no vizinho.',
       itens: ['Itens com risco de faltar antes da próxima entrega', 'Margem por categoria, não só faturamento', 'Produtos perto do vencimento que precisam de oferta já'],
       kpis: [['Risco de faltar', '12 itens'], ['Margem média', '21%'], ['Vencem em 7 dias', '37']],
-      grafico: 'MARGEM POR CATEGORIA', barras: [[92, G], [74, M], [66, M], [58, M], [40, M], [33, M], [18, R]],
+      grafico: 'RANKING DE MARGEM', eixo: ['Pães', 'Frios', 'Doces', 'Grãos', 'Carne', 'Refri', 'Leite'], barras: [[92, G], [74, M], [66, M], [58, M], [40, M], [33, M], [18, R]],
       alerta: 'Leite integral acaba na sexta no ritmo atual' },
     { id: 'farmacia', art: 'uma', nome: 'Farmácia', img: 'giro-farmacia.webp', alt: 'Prateleiras de farmácia com caixas e frascos de remédios', tint: '#D1FAE5', ink: '#065F46',
       ico: 'M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z',
       dor: 'Faltou o remédio de uso contínuo e o cliente fiel mudou de farmácia.',
       itens: ['Clientes de uso contínuo que não voltaram no mês', 'Estoque mínimo dos medicamentos de maior saída', 'Vendas por balconista e por convênio'],
       kpis: [['Clientes sumidos', '64'], ['Abaixo do mínimo', '19'], ['Receitas no mês', '412']],
-      grafico: 'CLIENTES DE USO CONTÍNUO POR MÊS', barras: [[80, M], [84, M], [82, M], [79, M], [71, M], [66, R], [60, R]],
+      grafico: 'CLIENTES DE USO CONTÍNUO POR MÊS', eixo: ['Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'], barras: [[80, M], [84, M], [82, M], [79, M], [71, M], [66, R], [60, R]],
       alerta: '64 clientes de uso contínuo não compraram este mês' },
     { id: 'pet', art: 'um', nome: 'Pet shop', img: 'giro-pet.webp', alt: 'Gato sentado sobre sacos de ração empilhados em um pet shop', tint: '#E0E7FF', ink: '#3730A3',
       ico: 'M5 9a1.5 2 0 1 0 3 0a1.5 2 0 1 0-3 0M8.5 6a1.5 2 0 1 0 3 0a1.5 2 0 1 0-3 0M12.5 6a1.5 2 0 1 0 3 0a1.5 2 0 1 0-3 0M16 9a1.5 2 0 1 0 3 0a1.5 2 0 1 0-3 0M12 12c-3 0-5.5 3.5-5.5 5.5 0 1.5 1.2 2.5 2.7 2.5 1.2 0 1.8-.6 2.8-.6s1.6.6 2.8.6c1.5 0 2.7-1 2.7-2.5 0-2-2.5-5.5-5.5-5.5z',
       dor: 'A ração de 15 kg acaba no sábado e o tutor não espera até segunda.',
       itens: ['Quando cada cliente deve voltar para recomprar', 'Horários ociosos da agenda de banho e tosa', 'Produtos que saem juntos, para montar combos'],
       kpis: [['Recompras na semana', '87'], ['Agenda ociosa', '31%'], ['Combo campeão', 'Ração + petisco']],
-      grafico: 'OCUPAÇÃO DA AGENDA POR DIA', barras: [[45, M], [38, M], [52, M], [60, M], [78, M], [100, G], [20, R]],
+      grafico: 'OCUPAÇÃO DA AGENDA POR DIA', eixo: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'], barras: [[45, M], [38, M], [52, M], [60, M], [78, M], [100, G], [20, R]],
       alerta: '18 tutores devem recomprar ração até sábado' },
     { id: 'food', art: 'uma', nome: 'Lanchonete', img: 'giro-food.webp', alt: 'Hambúrgueres com batata frita servidos em tábuas de madeira', tint: '#FFEDD5', ink: '#9A3412',
       ico: 'M4 10a8 5 0 0 1 16 0zM3 13h18M4 16h16v1a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z',
       dor: 'Compro insumo no feeling e jogo comida fora toda semana.',
       itens: ['Pratos que mais vendem e os que só dão trabalho', 'Movimento por hora para montar a escala', 'Custo do insumo comparado ao preço de venda'],
-      kpis: [['Prato campeão', 'X-tudo'], ['Horário de pico', '19h–21h'], ['Desperdício/mês', 'R$ 1,2 mil']],
-      grafico: 'PEDIDOS POR HORA', barras: [[12, M], [30, M], [44, M], [20, M], [26, M], [72, M], [100, A], [64, M]],
+      kpis: [['Prato campeão', 'X-tudo'], ['Horário de pico', '19h–21h'], ['Desperdício no mês', 'R$ 1,2 mil']],
+      grafico: 'PEDIDOS POR HORA', eixo: ['11h', '13h', '15h', '17h', '19h', '21h', '23h'], barras: [[40, M], [58, M], [16, M], [24, M], [88, A], [100, A], [42, M]],
       alerta: 'Alface: comprada 40% acima do que foi usado na semana' },
     { id: 'obra', art: 'uma loja de', nome: 'Construção', img: 'giro-obra.webp', alt: 'Estante cheia de tubos e barras de metal', tint: '#E7E5E4', ink: '#44403C',
       ico: 'M3 5h18v14H3zM3 9.7h18M3 14.3h18M9 5v4.7M15 5v4.7M6 9.7v4.6M12 9.7v4.6M18 9.7v4.6M9 14.3V19M15 14.3V19',
       dor: 'Tenho capital preso em item pesado que não sai, enquanto falta o básico.',
       itens: ['Curva ABC: os poucos itens que trazem a maior parte da receita', 'Itens dormindo que ocupam espaço e dinheiro', 'Clientes de obra que pararam de comprar'],
       kpis: [['Capital parado', 'R$ 84 mil'], ['Itens curva A', '126'], ['Obras ativas', '43']],
-      grafico: 'RECEITA POR GRUPO DE ITENS', barras: [[100, G], [64, M], [41, M], [28, M], [17, M], [11, M], [6, R]],
+      grafico: 'RANKING DE RECEITA', eixo: ['Areia', 'Ferro', 'Tubos', 'Fios', 'Tinta', 'Telha', 'Pisos'], barras: [[100, G], [64, M], [41, M], [28, M], [17, M], [11, M], [6, R]],
       alerta: 'Porcelanato 90×90: R$ 22 mil parados há 120 dias' }
   ];
   const tabs = $('#tabs'), photo = $('#segPhoto');
@@ -928,7 +936,8 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
   const loadAll = () => { if (photosOn) return; photosOn = true; SEGS.forEach((_, i) => loadPhoto(i)); };
   new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { loadAll(); o.disconnect(); } }, { rootMargin: '900px 0px' }).observe(photo);
   const bars = $('#segBars');
-  for (let i = 0; i < 8; i++) bars.appendChild(document.createElement('span'));
+  const axis = $('#segAxis');
+  for (let i = 0; i < 8; i++) { bars.appendChild(document.createElement('span')); axis.appendChild(document.createElement('span')); }
   const swapTxt = ['#segTxt', '#segItens', '#segKpis', '#segAlert'].map(s => $(s));
   let cur = -1;
   const show = i => {
@@ -947,6 +956,7 @@ footer .wrap{padding-top:28px;padding-bottom:96px;display:flex;flex-wrap:wrap;ga
       swapTxt.forEach(el => el.classList.remove('out'));
     };
     [...bars.children].forEach((b, j) => { const v = s.barras[j]; b.style.display = v ? '' : 'none'; if (v) { b.style.height = v[0] + '%'; b.style.background = v[1]; } });
+    [...axis.children].forEach((a, j) => { const v = s.barras[j]; a.style.display = v ? '' : 'none'; a.textContent = (s.eixo && s.eixo[j]) || ''; a.classList.toggle('hl', !!v && v[1] !== M); });
     if (first || reduce) fill(); else { swapTxt.forEach(el => el.classList.add('out')); setTimeout(fill, 220); }
   };
   SEGS.forEach((s, i) => {
