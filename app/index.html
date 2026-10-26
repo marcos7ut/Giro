@@ -26,7 +26,8 @@
 <meta property="og:url" content="https://marcos7ut.github.io/Giro/app/">
 <style>
 html,body{margin:0;height:100%;background:#07080A;overflow:hidden}
-iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#07080A}
+/* a moldura e a barra "Built with Streamlit" ficam fora da tela (a página do app já tem folga embaixo) */
+iframe{position:fixed;top:-3px;left:-3px;width:calc(100% + 6px);height:calc(100% + 52px);border:0;background:#07080A}
 #c{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#07080A;color:#A1A1AA;font:15px system-ui,-apple-system,"Segoe UI",sans-serif;transition:opacity .5s}
 #c.x{opacity:0;pointer-events:none}
 #c img{width:84px;height:84px;border-radius:22px;animation:p 1.6s ease-in-out infinite}
