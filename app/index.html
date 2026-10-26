@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Giro — seus números</title>
+<meta name="description" content="Painel de vendas do Giro: faturamento, produtos parados, validade e clientes sumidos.">
+<meta name="theme-color" content="#07080A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Giro">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="../icon-192.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Giro — teste grátis por 7 dias">
+<meta property="og:description" content="Suba a planilha da sua loja e veja onde está perdendo dinheiro: produtos parados, validade e clientes sumidos. Sem cartão.">
+<meta property="og:image" content="https://marcos7ut.github.io/Giro/og-app.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Giro App: veja onde sua loja está perdendo dinheiro">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://marcos7ut.github.io/Giro/app/">
+<style>
+html,body{margin:0;height:100%;background:#07080A;overflow:hidden}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#07080A}
+#c{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#07080A;color:#A1A1AA;font:15px system-ui,-apple-system,"Segoe UI",sans-serif;transition:opacity .5s}
+#c.x{opacity:0;pointer-events:none}
+#c img{width:84px;height:84px;border-radius:22px;animation:p 1.6s ease-in-out infinite}
+#c b{color:#F4F2EE;font-size:22px;letter-spacing:-.02em}#c b i{color:#34D399;font-style:normal}
+@keyframes p{50%{transform:scale(.92);opacity:.75}}
+</style>
+</head>
+<body>
+<div id="c"><img src="../icon-192.png" alt=""><b>giro<i>.</i></b><span>Abrindo seu painel…</span></div>
+<script>
+var q=new URLSearchParams(location.search);q.set("embed","true");q.append("embed_options","dark_theme");
+var f=document.createElement("iframe");
+f.src="https://meugiro.streamlit.app/?"+q.toString();
+f.title="Giro";f.allow="clipboard-read; clipboard-write; fullscreen";
+f.onload=function(){setTimeout(function(){document.getElementById("c").className="x"},600)};
+document.body.appendChild(f);
+setTimeout(function(){document.getElementById("c").className="x"},20000);
+</script>
+</body>
+</html>
