@@ -2,6 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Giro — Painéis de vendas para lojistas | Taboão da Serra e Sorocaba, SP</title>
 <meta name="description" content="Transformamos as planilhas da sua loja em um painel no celular: o que encalhou, o que vai faltar, quem vende mais e qual dia dá lucro. Sem trocar de sistema.">
@@ -482,6 +485,32 @@ footer{border-top:1px solid var(--line-d)}
 .app-plan p{color:var(--mu-l);font-size:14px}
 .app-plan .tag{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--am);color:var(--tx-l);border-radius:999px;padding:3px 10px;margin-bottom:4px}
 .app-plan .eco{align-self:flex-start;font-size:12.5px;font-weight:600;color:var(--em-d);background:#D1FAE5;border-radius:999px;padding:3px 10px;margin-top:4px}
+
+/* enxuto */
+.seg-dash{display:none!important}
+.send-cta{flex:1 1 300px;display:flex;flex-direction:column;justify-content:center;gap:14px;background:var(--ink);color:var(--tx-d);border-radius:28px;padding:28px}
+.send-cta p{color:var(--mu-d);font-size:15px}.send-cta a:not(.btn){color:var(--em-l)}
+.plans-grp{display:flex;flex-direction:column;gap:6px;margin:6px 0 16px}
+.grp-k{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--em-d)}
+.plans-grp h3{font-size:clamp(22px,3vw,28px);font-weight:600;letter-spacing:-.02em}
+.plans-grp small{font-size:15px;font-weight:400;color:var(--mu-l);letter-spacing:0}
+.grp-cta{margin-top:16px;align-self:flex-start}
+#planos{display:flex;flex-direction:column}
+.float.oculto{opacity:0;pointer-events:none;transform:translateY(12px)}
+.float{transition:opacity .3s,transform .3s}
+.foot-links{list-style:none;margin:0;padding:18px 0 0;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px}
+.foot-links a{color:var(--mu-d);text-decoration:none}.foot-links a:hover{color:var(--tx-d)}
+@media (max-width:640px){
+  #app .app-mock{display:none}
+  .app-plans{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .app-plan{padding:14px 10px;border-radius:18px;gap:4px;text-align:center;align-items:center}
+  .app-plan strong{font-size:21px}
+  .app-plan p{font-size:11.5px;line-height:1.35}
+  .app-plan .tag{align-self:center;font-size:9px;padding:2px 7px}
+  .app-plan .eco{align-self:center;font-size:10.5px;padding:2px 7px}
+  .app-plan small{font-size:10.5px}
+  .app-list{font-size:14.5px}
+}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -541,7 +570,7 @@ footer{border-top:1px solid var(--line-d)}
       </div>
       <div class="checks" data-reveal="4">
         <span><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Funciona com Excel e Google Planilhas</span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Pronto entre 7 e 15 dias</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Teste grátis por 7 dias, sem cartão</span>
       </div>
     </div>
 
@@ -648,20 +677,7 @@ footer{border-top:1px solid var(--line-d)}
 
 <div class="light">
   <!-- ================= PERDAS ================= -->
-  <section class="sec wrap">
-    <div class="sec-head">
-      <span class="kicker" style="color:var(--ro-d)" data-reveal>As 4 perdas invisíveis</span>
-      <h2 class="h2" data-reveal="2">O dinheiro não some de uma vez. <span class="it">Ele vaza.</span></h2>
-    </div>
-    <div class="cards4" id="perdas">
-      <article class="card" data-reveal><span class="n" style="color:var(--ro-d)">01</span><h3>Estoque dormindo</h3><p>Dinheiro que você já pagou, parado na prateleira e ocupando o lugar do que vende.</p></article>
-      <article class="card" data-reveal="2"><span class="n" style="color:var(--am-d)">02</span><h3>Produto que falta</h3><p>O cliente pediu, você não tinha, e ele foi ao concorrente. Essa venda não aparece em planilha nenhuma.</p></article>
-      <article class="card" data-reveal="3"><span class="n" style="color:var(--in)">03</span><h3>Promoção no escuro</h3><p>Desconto no que já vendia sozinho, no dia em que a loja já enche. Margem jogada fora.</p></article>
-      <article class="card" data-reveal="4"><span class="n" style="color:var(--em-d)">04</span><h3>Equipe sem número</h3><p>Sem saber quem vende mais e com que ticket, não dá para premiar, treinar nem acertar a escala.</p></article>
-    </div>
-    <div class="swipe-hint" aria-hidden="true">Deslize para ver as 4 <span>→</span></div>
-    <a class="link-cta" href="#simulador">Descobrir quanto estou perdendo <span>→</span></a>
-  </section>
+  
 
   <!-- ================= SIMULADOR ================= -->
   <section class="sec wrap" id="simulador">
@@ -717,35 +733,15 @@ footer{border-top:1px solid var(--line-d)}
     <div class="sec-head">
       <span class="kicker" style="color:var(--em-d)" data-reveal>Diagnóstico grátis</span>
       <h2 class="h2" data-reveal="2">Como mandar sua planilha em <span class="it">2 minutos.</span></h2>
-      <p class="lead" style="color:var(--mu-l)" data-reveal="3">Sem cadastro e sem formulário. Do jeito que a planilha estiver.</p>
+      <p class="lead" style="color:var(--mu-l)" data-reveal="3">Sem cadastro e sem formulário. Em até 48 horas você recebe 3 coisas que a sua planilha esconde.</p>
     </div>
-    <ol class="timeline" data-reveal>
-      <li class="now"><em>Hoje</em><b>Você manda a planilha</b></li>
-      <li><em>48 horas</em><b>Diagnóstico grátis</b></li>
-      <li><em>7 a 15 dias</em><b>Painel pronto e aprovado</b></li>
-      <li><em>Sempre</em><b>Você acompanha no celular</b></li>
-    </ol>
     <div class="send">
       <div class="send-steps">
         <article class="sstep" data-reveal><span class="n">1</span><div><h3>Separe o arquivo</h3><p>A planilha onde você anota as vendas, de preferência com os últimos 3 meses. Pode estar bagunçada: organizar é com a gente.</p><small><span>Excel</span><span>Google Planilhas</span><span>CSV</span></small></div></article>
         <article class="sstep" data-reveal="2"><span class="n">2</span><div><h3>Tem sistema? Exporte o relatório</h3><p>No sistema da loja, procure a opção <b style="color:var(--tx-l);font-weight:600">Relatório de vendas</b> ou <b style="color:var(--tx-l);font-weight:600">Exportar</b> e salve em Excel. Na Google Planilhas: Arquivo › Fazer download › Microsoft Excel.</p></div></article>
         <article class="sstep" data-reveal="3"><span class="n">3</span><div><h3>Mande no WhatsApp</h3><p>Toque em <b style="color:var(--tx-l);font-weight:600">Mandar minha planilha</b> e envie o arquivo na conversa. Em até 48 horas você recebe 3 coisas que a sua planilha esconde, sem compromisso.</p></div></article>
       </div>
-      <div class="send-demo" data-reveal="2">
-        <div style="display:flex;align-items:center;gap:12px">
-          <svg width="40" height="40" viewBox="60 38 392 392"><defs><linearGradient id="gaSend" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#047857"/><stop offset=".55" stop-color="#10B981"/><stop offset="1" stop-color="#6EE7B7"/></linearGradient></defs><path d="M352.4 141.1 A150 150 0 1 1 282.0 108.3" fill="none" stroke="url(#gaSend)" stroke-width="36" stroke-linecap="round"/><rect x="180.4" y="278" width="38" height="78" rx="16" fill="#F4F2EE"/><rect x="240.4" y="224" width="38" height="132" rx="16" fill="#F4F2EE"/><rect x="300.4" y="120" width="38" height="236" rx="16" fill="#FBBF24"/><path d="M319.4 58 L363.4 124 L275.4 124 Z" fill="#FBBF24" stroke="#FBBF24" stroke-width="10" stroke-linejoin="round"/></svg>
-          <div><b style="display:block;font-size:15px">giro.</b><span style="font-size:12px;color:#34D399">online</span></div>
-        </div>
-        <div class="chat" aria-hidden="true">
-          <div class="bub out sq1">Olá! Quero o diagnóstico grátis da minha planilha.</div>
-          <div class="bub out sq2"><div class="file"><i>XLS</i><div><b>vendas-loja.xlsx</b><em>3 meses · 1.650 linhas</em></div></div><div class="prog"><i></i></div><div class="ticks"><span>23:51</span><span class="tk2">✓✓</span></div></div>
-          <div style="position:relative;align-self:flex-start;max-width:86%">
-            <div class="bub in sq3" style="position:absolute;left:0;top:0;max-width:none"><span class="typing"><i></i><i></i><i></i></span></div>
-            <div class="bub in sq4" style="max-width:none">Recebemos! Em até 48 horas mandamos as 3 descobertas da sua planilha.</div>
-          </div>
-        </div>
-        <a class="btn btn-amber js-wa" data-msg="Olá! Quero mandar minha planilha para o diagnóstico grátis." href="#contato" style="pointer-events:auto">Mandar minha planilha</a>
-      </div>
+      <div class="send-cta" data-reveal="2"><a class="btn btn-amber js-wa" data-msg="Olá! Quero mandar minha planilha para o diagnóstico grátis." href="#contato">Mandar minha planilha</a><p>Prefere fazer sozinho? <a href="#app">Teste o app grátis por 7 dias →</a></p></div>
     </div>
   </section>
 
@@ -784,11 +780,7 @@ footer{border-top:1px solid var(--line-d)}
         <div class="mk sim"><small>Simulador · 15% de desconto</small><p>Para lucrar o mesmo, você precisa vender <b>1,6× mais</b>.</p></div>
       </div>
     </div>
-    <div class="app-plans" data-reveal="2">
-      <div class="app-plan"><small>Mensal</small><strong>R$ 49,90</strong><p>por mês · painel completo</p></div>
-      <div class="app-plan hl"><span class="tag">mais escolhido</span><small>Semestral</small><strong>R$ 249</strong><p>R$ 41,50 por mês · + PDF e mensagens prontas</p><span class="eco">economize 17%</span></div>
-      <div class="app-plan"><small>Anual</small><strong>R$ 449</strong><p>R$ 37,42 por mês · + PDF e mensagens prontas</p><span class="eco">economize 25%</span></div>
-    </div>
+    
   </section>
 
   <!-- ================= PLANOS ================= -->
@@ -796,19 +788,27 @@ footer{border-top:1px solid var(--line-d)}
     <div class="plans-head">
       <div class="sec-head" style="margin:0;flex:999 1 520px">
         <span class="kicker" data-reveal>Planos</span>
-        <h2 class="h2" data-reveal="2">Pague uma vez. <span class="it">Enxergue sempre.</span></h2>
+        <h2 class="h2" data-reveal="2">Dois jeitos de <span class="it">fazer sua loja girar.</span></h2>
       </div>
-      <span class="badge-green" data-reveal="3"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex:none"><path d="M20 12l-8 8-9-9V3h8z" stroke="#065F46" stroke-width="2" fill="none" stroke-linejoin="round"/><circle cx="7.5" cy="7.5" r="1.5" fill="#065F46"/></svg>Preços 15% abaixo da média de mercado para painéis de dados em 2026</span>
+      
     </div>
 
 
+    <div class="plans-grp" data-reveal><span class="grp-k">Faça você mesmo</span><h3>Giro App <small>· você sobe a planilha e vê na hora</small></h3></div>
+    <div class="app-plans">
+      <div class="app-plan"><small>Mensal</small><strong>R$ 49,90</strong><p>por mês · painel completo</p></div>
+      <div class="app-plan hl"><span class="tag">mais escolhido</span><small>Semestral</small><strong>R$ 249</strong><p>R$ 41,50/mês · + PDF e mensagens</p><span class="eco">economize 17%</span></div>
+      <div class="app-plan"><small>Anual</small><strong>R$ 449</strong><p>R$ 37,42/mês · + PDF e mensagens</p><span class="eco">economize 25%</span></div>
+    </div>
+    <a class="btn btn-amber grp-cta" href="#app">Começar 7 dias grátis</a>
+    <div class="plans-grp" data-reveal style="margin-top:46px"><span class="grp-k">Feito para você</span><h3>Painel sob medida <small>· a gente organiza, monta e treina na sua loja</small></h3></div>
     <div class="plan-tabs" role="tablist" aria-label="Planos" id="planTabs">
       <button type="button" role="tab" data-p="ess" aria-selected="false">Essencial</button><button type="button" role="tab" data-p="loja" aria-selected="true">Loja Completa</button><button type="button" role="tab" data-p="rede" aria-selected="false">Rede</button>
     </div>
     <div class="plans" id="plans" data-active="loja">
       <article class="plan" data-p="ess" data-reveal>
         <div><h3>Essencial</h3><p class="sub">Para quem quer começar a enxergar</p></div>
-        <div><div class="price">R$ 1.700</div><p class="price-note">pagamento único · média de mercado R$ 2.000</p></div>
+        <div><div class="price">R$ 1.700</div><p class="price-note">pagamento único</p></div>
         <ul>
           <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>1 planilha de vendas organizada</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Faturamento, ticket médio e dias fortes</li>
@@ -820,7 +820,7 @@ footer{border-top:1px solid var(--line-d)}
       <div class="plan-hl" data-p="loja" data-reveal="2">
         <article class="plan">
           <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><h3>Loja Completa</h3><p class="sub">Ideal para uma loja</p></div><span class="rec">Recomendado</span></div>
-          <div><div class="price">R$ 2.930</div><p class="price-note">pagamento único · média de mercado R$ 3.450</p></div>
+          <div><div class="price">R$ 2.930</div><p class="price-note">pagamento único</p></div>
           <ul>
             <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Vendas, estoque e equipe juntos</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Destaque de produtos dormindo e em falta</li>
@@ -832,7 +832,7 @@ footer{border-top:1px solid var(--line-d)}
       </div>
       <article class="plan" data-p="rede" data-reveal="3">
         <div><h3>Rede</h3><p class="sub">Mais de uma loja ou várias fontes</p></div>
-        <div><div class="price">R$ 4.675</div><p class="price-note">pagamento único · média de mercado R$ 5.500</p></div>
+        <div><div class="price">R$ 4.675</div><p class="price-note">pagamento único</p></div>
         <ul>
           <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Tudo da Loja Completa</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Sistema e planilhas na mesma tela</li>
@@ -892,6 +892,7 @@ footer{border-top:1px solid var(--line-d)}
     <li><strong>Marcos Lima</strong><span>Taboão da Serra, SP</span></li>
     <li><strong>Fernando Henrique</strong><span>Sorocaba, SP</span></li>
   </ul>
+  <ul class="foot-links"><li><a href="#app">Teste grátis</a></li><li><a href="app/">Entrar no app</a></li><li><a href="privacidade.html">Privacidade e termos</a></li><li><a href="mailto:marcos7ut@gmail.com">marcos7ut@gmail.com</a></li></ul>
   <div class="foot-bottom"><span>© 2026 Giro</span><span>Os exemplos desta página são ilustrativos, com números fictícios.</span></div>
 </div></footer>
 
@@ -1123,6 +1124,12 @@ footer{border-top:1px solid var(--line-d)}
   navA.forEach(a => a.addEventListener('focus', () => navWrap.classList.remove('up')));
   onScroll();
 })();
+</script>
+<script>
+(()=>{const f=document.getElementById('float');if(!f||!('IntersectionObserver' in window))return;
+const alvos=['app','simulador','contato'].map(i=>document.getElementById(i)).filter(Boolean);const vis=new Set();
+const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target));f.classList.toggle('oculto',vis.size>0)},{threshold:.15});
+alvos.forEach(a=>io.observe(a));})();
 </script>
 </body>
 </html>
