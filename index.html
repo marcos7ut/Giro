@@ -13,9 +13,68 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Giro — Estoque parado é dinheiro dormindo">
 <meta property="og:description" content="Painéis de vendas para lojistas, feitos a partir das planilhas que você já usa. Diagnóstico grátis.">
+<meta property="og:site_name" content="Giro">
 <meta property="og:image" content="https://marcos7ut.github.io/Giro/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Giro: estoque parado é dinheiro dormindo">
 <meta property="og:url" content="https://marcos7ut.github.io/Giro/">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Giro — Estoque parado é dinheiro dormindo">
+<meta name="twitter:description" content="Painéis de vendas para lojistas, feitos a partir das planilhas que você já usa. Diagnóstico grátis.">
+<meta name="twitter:image" content="https://marcos7ut.github.io/Giro/og-image.jpg">
+<link rel="canonical" href="https://marcos7ut.github.io/Giro/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://marcos7ut.github.io/Giro/#negocio",
+      "name": "Giro",
+      "description": "Painéis de vendas para lojistas, feitos a partir das planilhas que a loja já usa.",
+      "url": "https://marcos7ut.github.io/Giro/",
+      "logo": "https://marcos7ut.github.io/Giro/icon-512.png",
+      "image": "https://marcos7ut.github.io/Giro/og-image.jpg",
+      "email": "marcos7ut@gmail.com",
+      "priceRange": "R$ 49,90 – R$ 4.675",
+      "areaServed": [
+        { "@type": "City", "name": "Taboão da Serra" },
+        { "@type": "City", "name": "Sorocaba" },
+        { "@type": "Country", "name": "Brasil" }
+      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Taboão da Serra", "addressRegion": "SP", "addressCountry": "BR" },
+      "founder": [
+        { "@type": "Person", "name": "Marcos Lima" },
+        { "@type": "Person", "name": "Fernando Henrique" }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Giro App",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://marcos7ut.github.io/Giro/app/",
+      "offers": [
+        { "@type": "Offer", "name": "Mensal", "price": "49.90", "priceCurrency": "BRL" },
+        { "@type": "Offer", "name": "Semestral", "price": "249.00", "priceCurrency": "BRL" },
+        { "@type": "Offer", "name": "Anual", "price": "449.00", "priceCurrency": "BRL" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Preciso ter um sistema de vendas?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Uma planilha de vendas já basta. Se você tiver um sistema, usamos o relatório exportado dele." } },
+        { "@type": "Question", "name": "Minha planilha é uma bagunça. Serve?", "acceptedAnswer": { "@type": "Answer", "text": "Serve. Organizar faz parte do serviço, e você sai com uma planilha padrão, mais fácil de preencher." } },
+        { "@type": "Question", "name": "Meus dados ficam seguros?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O painel abre só para quem você autorizar. Seus dados são usados só para montar o seu painel, não são compartilhados com ninguém e são apagados quando você pedir, como prevê a LGPD." } },
+        { "@type": "Question", "name": "Quanto tempo leva?", "acceptedAnswer": { "@type": "Answer", "text": "O diagnóstico grátis sai em até 48 horas. O painel completo fica pronto entre 7 e 15 dias, conforme o plano." } },
+        { "@type": "Question", "name": "Como funciona o teste grátis do app?", "acceptedAnswer": { "@type": "Answer", "text": "Você coloca seu e-mail, recebe um código de acesso e já entra. São 7 dias com tudo liberado, sem cartão e sem compromisso. Depois, se quiser continuar, escolhe um plano." } }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -29,7 +88,7 @@
 :root{
   --ink:#07080A;--ink-2:#0E1013;--ink-3:#15181D;--ink-4:#1F232A;--line-d:rgba(255,255,255,.09);
   --paper:#F3F0EA;--card:#FFFFFF;--line-l:#E7E2D9;--line-l2:#F0EBE2;
-  --tx-d:#F4F2EE;--mu-d:#A1A1AA;--mu-d2:#71717A;--tx-l:#17140F;--mu-l:#6B645B;
+  --tx-d:#F4F2EE;--mu-d:#A1A1AA;--mu-d2:#85858E;--tx-l:#17140F;--mu-l:#6B645B;
   --em:#34D399;--em-l:#6EE7B7;--em-d:#047857;--am:#FBBF24;--am-d:#B45309;--ro:#FB7185;--ro-d:#BE123C;--in:#4338CA;
   --serif:'Instrument Serif',Georgia,serif;--sans:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'Geist Mono',ui-monospace,monospace;
   --ease:cubic-bezier(.22,1,.36,1);--wrap:1280px;
@@ -497,7 +556,6 @@ footer{border-top:1px solid var(--line-d)}
 .grp-cta{margin-top:16px;align-self:flex-start}
 #planos{display:flex;flex-direction:column}
 .float.oculto{opacity:0;pointer-events:none;transform:translateY(12px)}
-.float{transition:opacity .3s,transform .3s}
 .foot-links{list-style:none;margin:0;padding:18px 0 0;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px}
 .foot-links a{color:var(--mu-d);text-decoration:none}.foot-links a:hover{color:var(--tx-d)}
 @media (max-width:640px){
@@ -803,7 +861,7 @@ footer{border-top:1px solid var(--line-d)}
     <a class="btn btn-amber grp-cta" href="#app">Começar 7 dias grátis</a>
     <div class="plans-grp" data-reveal style="margin-top:46px"><span class="grp-k">Feito para você</span><h3>Painel sob medida <small>· a gente organiza, monta e treina na sua loja</small></h3></div>
     <div class="plan-tabs" role="tablist" aria-label="Planos" id="planTabs">
-      <button type="button" role="tab" data-p="ess" aria-selected="false">Essencial</button><button type="button" role="tab" data-p="loja" aria-selected="true">Loja Completa</button><button type="button" role="tab" data-p="rede" aria-selected="false">Rede</button>
+      <button type="button" role="tab" aria-controls="plans" data-p="ess" aria-selected="false">Essencial</button><button type="button" role="tab" aria-controls="plans" data-p="loja" aria-selected="true">Loja Completa</button><button type="button" role="tab" aria-controls="plans" data-p="rede" aria-selected="false">Rede</button>
     </div>
     <div class="plans" id="plans" data-active="loja">
       <article class="plan" data-p="ess" data-reveal>
@@ -879,6 +937,7 @@ footer{border-top:1px solid var(--line-d)}
     <p data-reveal="2">Lançamento: os <strong>5 primeiros lojistas pagam 30% a menos</strong> em troca de um depoimento sobre o resultado.</p>
     <a class="shine js-wa" data-msg="Olá! Vim pelo site do Giro e quero saber mais." href="#contato" data-reveal="3" aria-label="Conversar com o Giro no WhatsApp"><span><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" stroke="#34D399" stroke-width="2" fill="none" stroke-linejoin="round"/><circle cx="8.5" cy="10.5" r="1.2" fill="#34D399"/><circle cx="12" cy="10.5" r="1.2" fill="#34D399"/><circle cx="15.5" cy="10.5" r="1.2" fill="#34D399"/></svg>Chamar no WhatsApp</span></a>
     <span class="sign">Diagnóstico grátis, sem compromisso.</span>
+    <noscript><p class="sign">Sem JavaScript? Fale com a gente por e-mail: <a href="mailto:marcos7ut@gmail.com">marcos7ut@gmail.com</a></p></noscript>
   </div>
 </section>
 </main>
@@ -1051,6 +1110,7 @@ footer{border-top:1px solid var(--line-d)}
   const show = i => {
     if (i === cur) return; const s = SEGS[i]; const first = cur < 0; cur = i;
     [...tabs.children].forEach((b, j) => { b.setAttribute('aria-selected', j === i); b.tabIndex = j === i ? 0 : -1; });
+    $('#segPanel').setAttribute('aria-labelledby', 'tab-' + s.id);
     loadPhoto(i);
     imgs.forEach((im, j) => { im.classList.toggle('on', j === i); im.alt = j === i ? s.alt : ''; });
     const segCta = $('#segCta'); $('#segCtaName').textContent = s.nome.toLowerCase();
@@ -1068,7 +1128,7 @@ footer{border-top:1px solid var(--line-d)}
     if (first || reduce) fill(); else { swapTxt.forEach(el => el.classList.add('out')); setTimeout(fill, 220); }
   };
   SEGS.forEach((s, i) => {
-    const b = document.createElement('button'); b.className = 'tab'; b.type = 'button'; b.role = 'tab'; b.textContent = s.nome; b.setAttribute('aria-controls', 'segPanel');
+    const b = document.createElement('button'); b.className = 'tab'; b.type = 'button'; b.id = 'tab-' + s.id; b.setAttribute('role', 'tab'); b.textContent = s.nome; b.setAttribute('aria-controls', 'segPanel');
     b.addEventListener('click', () => show(i));
     b.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const n = (i + (e.key === 'ArrowRight' ? 1 : SEGS.length - 1)) % SEGS.length; show(n); tabs.children[n].focus(); } });
     tabs.append(b);
@@ -1089,10 +1149,19 @@ footer{border-top:1px solid var(--line-d)}
   burger.addEventListener('click', openMenu);
   $('#menuClose').addEventListener('click', () => { closeMenu(); burger.focus(); });
   menu.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', closeMenu));
-  addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('open')) { closeMenu(); burger.focus(); } });
+  addEventListener('keydown', e => {
+    if (!menu.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeMenu(); burger.focus(); return; }
+    if (e.key === 'Tab') { /* mantém o foco dentro do menu aberto */
+      const f = [...menu.querySelectorAll('a[href],button')], first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 
   /* Item ativo no menu, barra de progresso, menu que some ao descer */
-  const secIds = ['luz', 'simulador', 'ramos', 'enviar', 'planos', 'duvidas'];
+  /* seções lidas dos próprios links do menu, para nunca ficarem fora de ordem */
+  const secIds = [...document.querySelectorAll('#navLinks a')].map(a => a.getAttribute('href').slice(1));
   const secs = secIds.map(id => document.getElementById(id));
   const navA = [...document.querySelectorAll('#navLinks a')], sheetA = [...document.querySelectorAll('.sheet-links a')];
   const pill = $('#navPill'), prog = $('#navProg'), navWrap = $('#navWrap');
