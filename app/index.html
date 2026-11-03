@@ -2,10 +2,13 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://*.streamlit.app https://*.streamlit.io; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Giro — seus números</title>
 <meta name="description" content="Painel de vendas do Giro: faturamento, produtos parados, validade e clientes sumidos.">
 <meta name="theme-color" content="#07080A">
+<meta name="robots" content="noindex">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Giro">
@@ -14,6 +17,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="../icon-192.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://meugiro.streamlit.app">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Giro — teste grátis por 7 dias">
@@ -28,23 +32,39 @@
 html,body{margin:0;height:100%;background:#07080A;overflow:hidden}
 /* a moldura e a barra "Built with Streamlit" ficam fora da tela (a página do app já tem folga embaixo) */
 iframe{position:fixed;top:-3px;left:-3px;width:calc(100% + 6px);height:calc(100% + 52px);border:0;background:#07080A}
-#c{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#07080A;color:#A1A1AA;font:15px system-ui,-apple-system,"Segoe UI",sans-serif;transition:opacity .5s}
+#c{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;background:#07080A;color:#A1A1AA;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;transition:opacity .5s}
 #c.x{opacity:0;pointer-events:none}
 #c img{width:84px;height:84px;border-radius:22px;animation:p 1.6s ease-in-out infinite}
 #c b{color:#F4F2EE;font-size:22px;letter-spacing:-.02em}#c b i{color:#34D399;font-style:normal}
+#c a{color:#6EE7B7}
+#c small{max-width:320px;font-size:13px;color:#85858E}
 @keyframes p{50%{transform:scale(.92);opacity:.75}}
+@media (prefers-reduced-motion:reduce){#c img{animation:none}#c{transition:none}}
 </style>
 </head>
 <body>
-<div id="c"><img src="../icon-192.png" alt=""><b>giro<i>.</i></b><span>Abrindo seu painel…</span></div>
+<div id="c" role="status" aria-live="polite"><img src="../icon-192.png" alt=""><b>giro<i>.</i></b><span id="m">Abrindo seu painel…</span><small id="s" hidden></small>
+<noscript><span>O painel precisa de JavaScript ativado. <a href="https://meugiro.streamlit.app/">Abrir direto</a></span></noscript></div>
 <script>
-var q=new URLSearchParams(location.search);q.set("embed","true");q.append("embed_options","dark_theme");
-var f=document.createElement("iframe");
-f.src="https://meugiro.streamlit.app/?"+q.toString();
-f.title="Giro";f.allow="clipboard-read; clipboard-write; fullscreen";
-f.onload=function(){setTimeout(function(){document.getElementById("c").className="x"},600)};
-document.body.appendChild(f);
-setTimeout(function(){document.getElementById("c").className="x"},20000);
+(function(){
+  var APP = "https://meugiro.streamlit.app/";
+  var c = document.getElementById("c"), m = document.getElementById("m"), s = document.getElementById("s");
+  var q = new URLSearchParams(location.search); q.set("embed", "true"); q.append("embed_options", "dark_theme");
+  var f = document.createElement("iframe");
+  f.src = APP + "?" + q.toString();
+  f.title = "Giro — painel de vendas";
+  f.allow = "clipboard-read; clipboard-write; fullscreen";
+  var done = false, hide = function(){ if (done) return; done = true; c.className = "x"; };
+  f.onload = function(){ setTimeout(hide, 600); };
+  document.body.appendChild(f);
+  /* o servidor gratuito "dorme" quando fica sem uso; avisamos em vez de deixar a pessoa olhando para a tela parada */
+  setTimeout(function(){ if (done) return; m.textContent = "Ligando o servidor, pode levar até 1 minuto…"; s.hidden = false; s.textContent = "Isso só acontece no primeiro acesso depois de um tempo sem uso."; }, 6000);
+  setTimeout(function(){ if (done) return; s.innerHTML = 'Demorando demais? <a href="' + APP + '" target="_blank" rel="noopener">Abrir o painel em outra aba</a>.'; }, 30000);
+  setTimeout(hide, 60000);
+  /* tira o e-mail da barra de endereço depois de repassá-lo ao app */
+  var u = new URL(location.href);
+  if (u.searchParams.has("email") && history.replaceState) { u.searchParams.delete("email"); history.replaceState(null, "", u.pathname + u.search + u.hash); }
+})();
 </script>
 </body>
 </html>
