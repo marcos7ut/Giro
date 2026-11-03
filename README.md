@@ -24,7 +24,8 @@
 
 - **Número do WhatsApp:** constante `WHATS` no início do `<script>` de `index.html`. Os links são montados por JavaScript para o número não ficar exposto no HTML.
 - **Endereço do app:** constante `APP` em `app/index.html`.
-- **Preços:** seção `#planos` de `index.html` **e** o bloco `application/ld+json` no `<head>` (dados para o Google). Mantenha os dois iguais.
+- **Preços:** objetos `APP` e `SOB` no `<script>` de `index.html`, o HTML da seção `#planos` (valor inicial, para quem está sem JavaScript) e o bloco `application/ld+json` no `<head>`. Mantenha todos iguais.
+- **Depoimentos:** lista `DEPOIMENTOS` no início do `<script>`. Coloque só depoimentos reais, com autorização por escrito do cliente. `VAGAS_LIVRES` controla quantas vagas de lançamento aparecem abertas.
 - **Perguntas frequentes:** seção `#duvidas` e o `FAQPage` no mesmo bloco `ld+json`.
 - **Seções do menu:** o destaque do item ativo segue a ordem dos links de `#navLinks`; basta o `href` apontar para o `id` da seção.
 

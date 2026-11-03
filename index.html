@@ -38,7 +38,7 @@
       "logo": "https://marcos7ut.github.io/Giro/icon-512.png",
       "image": "https://marcos7ut.github.io/Giro/og-image.jpg",
       "email": "marcos7ut@gmail.com",
-      "priceRange": "R$ 49,90 – R$ 4.675",
+      "priceRange": "R$ 49,90 – R$ 3.990",
       "areaServed": [
         { "@type": "City", "name": "Taboão da Serra" },
         { "@type": "City", "name": "Sorocaba" },
@@ -384,8 +384,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .swipe-hint{display:none;font-size:13px;color:var(--mu-l);margin-top:10px}
 .seg-cta{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;margin-top:22px;background:var(--card);border:1px solid var(--line-l);border-radius:22px;padding:20px 24px}
 .seg-cta p{flex:999 1 320px;color:var(--mu-l);font-size:16px;line-height:1.5}.seg-cta p b{color:var(--tx-l)}
-/* abas de planos (celular) */
-.plan-tabs{display:none}
 /* dúvidas */
 .faq{padding-top:60px;padding-bottom:110px}
 .faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
@@ -409,23 +407,8 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   .luz-cta{width:100%}
   .switch{width:100%;padding-right:18px}#switchLabel{flex:1;text-align:center;padding-right:44px}
   .sec{padding-top:68px;padding-bottom:28px}.luz .wrap{padding-top:72px;padding-bottom:72px;gap:28px}.faq{padding-top:40px;padding-bottom:80px}
-  .plan-tabs{display:flex;gap:4px;background:#fff;border:1px solid var(--line-l);border-radius:999px;padding:4px;margin-bottom:16px}
-  .plan-tabs button{flex:1;min-height:44px;border:0;border-radius:999px;background:transparent;font-size:14px;font-weight:600;color:var(--mu-l);cursor:pointer;transition:background .3s,color .3s}
-  .plan-tabs button[aria-selected=true]{background:var(--tx-l);color:var(--tx-d)}
-  .plans>[data-p]{display:none}
-  .plans[data-active=ess]>[data-p=ess],.plans[data-active=loja]>[data-p=loja],.plans[data-active=rede]>[data-p=rede]{display:flex;animation:planIn .45s var(--ease)}
-  .plans>.plan[data-p]{flex-direction:column}
 }
-@keyframes planIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 /* planos */
-.plans-head{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:28px}
-.badge-green{flex:1 1 260px;max-width:440px;display:inline-flex;align-items:center;gap:10px;background:#D1FAE5;color:#065F46;border-radius:16px;padding:14px 18px;font-size:15px;font-weight:500;line-height:1.4}
-.diag{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;background:var(--tx-l);color:var(--tx-d);border-radius:26px;padding:26px 28px;margin-bottom:18px}
-.diag>div{flex:999 1 420px;min-width:0;display:flex;gap:16px;align-items:flex-start}
-.diag .ico{width:48px;height:48px;border-radius:14px;background:var(--am);flex:none}
-.diag h3{font-size:20px;font-weight:600}
-.diag p{color:var(--mu-d);font-size:15px;line-height:1.55;margin-top:6px}
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;align-items:stretch}
 .plan{background:var(--card);border:1px solid var(--line-l);border-radius:28px;padding:30px;display:flex;flex-direction:column;gap:18px;transition:border-color .3s,transform .35s var(--ease)}
 @media (hover:hover){.plan:hover{border-color:var(--tx-l)}}
 .plan h3{font-size:20px;font-weight:600}
@@ -441,13 +424,37 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .plan-hl .sub,.plan-hl .price-note{color:var(--mu-d)}
 .plan-hl ul{border-color:rgba(255,255,255,.1)}
 .rec{background:var(--am);color:var(--tx-l);font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;white-space:nowrap;align-self:flex-start}
-.monthly{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:var(--card);border:1px dashed #C9C0B0;border-radius:22px;padding:22px 26px;margin-top:18px}
-.monthly>div{flex:999 1 380px;min-width:0}
-.monthly h3{font-size:18px;font-weight:600}
-.monthly p{color:var(--mu-l);font-size:15px;line-height:1.5;margin-top:4px}
-.monthly strong{font-size:30px;font-weight:600;letter-spacing:-.03em;white-space:nowrap}
-.monthly strong small{font-size:16px;color:var(--mu-l);font-weight:500}
 
+/* depoimentos */
+.dep{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px}
+.dep-slot{border:1.5px dashed #C9C0B0;border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:4px;min-height:150px;justify-content:flex-end}
+.dep-slot b{font-size:17px;font-weight:600}
+.dep-slot small{font-size:14px;color:var(--mu-l)}
+.dep-slot.taken{border-style:solid;background:var(--card);border-color:var(--line-l)}
+.dep-n{font-family:var(--serif);font-size:44px;line-height:.9;color:var(--em-d);margin-bottom:auto}
+.dep-card{grid-column:span 2;background:var(--card);border:1px solid var(--line-l);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:14px;margin:0}
+@media (max-width:640px){.dep-card{grid-column:auto}.dep{grid-template-columns:1fr 1fr}.dep-slot{min-height:120px;padding:16px}.dep-n{font-size:36px}.dep-card{grid-column:1/-1}}
+.dep-card blockquote{margin:0;font-size:18px;line-height:1.5}
+.dep-card blockquote::before{content:"\201C";font-family:var(--serif);font-size:56px;line-height:0;vertical-align:-24px;margin-right:4px;color:var(--em-d)}
+.dep-res{align-self:flex-start;background:#D1FAE5;color:#065F46;border-radius:999px;padding:5px 12px;font-size:14px;font-weight:600}
+.dep-card figcaption{font-size:14px;color:var(--mu-l)}.dep-card figcaption b{color:var(--tx-l)}
+/* planos */
+.grp-k{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--em-d)}
+.path{list-style:none;margin:0 0 22px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.path li{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line-l);border-radius:18px;padding:14px 16px}
+.path li:first-child{background:#ECFDF5;border-color:#A7F3D0}
+.path span{width:34px;height:34px;flex:none;border-radius:10px;background:var(--tx-l);color:var(--tx-d);display:flex;align-items:center;justify-content:center;font-weight:700}
+.path b{display:block;font-size:16px;font-weight:600;line-height:1.3}.path small{display:block;font-size:13.5px;color:var(--mu-l);line-height:1.4;margin-top:2px}
+@media (max-width:760px){.path{grid-template-columns:1fr}}
+.pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:18px;align-items:stretch}
+.price small{font-size:18px;font-weight:500;letter-spacing:0;color:var(--mu-l);margin-left:4px}
+.plan-hl .price small{color:var(--mu-d)}
+.seg-ctl{display:flex;gap:4px;background:var(--paper);border:1px solid var(--line-l);border-radius:999px;padding:4px}
+.seg-ctl button{flex:1;min-height:42px;border:0;border-radius:999px;background:transparent;font-size:14px;font-weight:600;color:var(--mu-l);cursor:pointer;padding:0 8px;transition:background .25s,color .25s}
+.seg-ctl button[aria-pressed=true]{background:var(--tx-l);color:var(--tx-d)}
+.seg-ctl.dark{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
+.seg-ctl.dark button{color:var(--mu-d)}.seg-ctl.dark button[aria-pressed=true]{background:var(--tx-d);color:var(--ink)}
+.pk-extra{font-size:14px;line-height:1.5;color:var(--mu-d);border-top:1px solid rgba(255,255,255,.1);padding-top:14px}.pk-extra b{color:var(--tx-d);font-weight:600}
 /* como funciona + faq */
 .duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:18px;padding-bottom:110px}
 .box{background:var(--card);border:1px solid var(--line-l);border-radius:28px;padding:30px;display:flex;flex-direction:column;gap:14px}
@@ -536,37 +543,17 @@ footer{border-top:1px solid var(--line-d)}
 .mk .row em{font-style:normal;font-family:var(--mono);font-size:12px;padding:3px 9px;border-radius:999px;white-space:nowrap}
 .mk .ro{color:var(--ro);background:rgba(251,113,133,.12)}.mk .am{color:var(--am);background:rgba(251,191,36,.12)}
 .mk.sim p{margin:6px 0 0;font-size:14px;line-height:1.45;color:#D4D4D8}.mk.sim p b{color:var(--am)}
-.app-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px;margin-top:22px}
-.app-plan{background:var(--card);border:1px solid var(--line-l);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:6px}
-.app-plan.hl{border-color:var(--tx-l);box-shadow:0 18px 40px rgba(23,20,15,.08)}
-.app-plan small{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu-l)}
-.app-plan strong{font-size:34px;font-weight:600;letter-spacing:-.04em;line-height:1.1}
-.app-plan p{color:var(--mu-l);font-size:14px}
-.app-plan .tag{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--am);color:var(--tx-l);border-radius:999px;padding:3px 10px;margin-bottom:4px}
-.app-plan .eco{align-self:flex-start;font-size:12.5px;font-weight:600;color:var(--em-d);background:#D1FAE5;border-radius:999px;padding:3px 10px;margin-top:4px}
 
 /* enxuto */
 .seg-dash{display:none!important}
 .send-cta{flex:1 1 300px;display:flex;flex-direction:column;justify-content:center;gap:14px;background:var(--ink);color:var(--tx-d);border-radius:28px;padding:28px}
 .send-cta p{color:var(--mu-d);font-size:15px}.send-cta a:not(.btn){color:var(--em-l)}
-.plans-grp{display:flex;flex-direction:column;gap:6px;margin:6px 0 16px}
 .grp-k{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--em-d)}
-.plans-grp h3{font-size:clamp(22px,3vw,28px);font-weight:600;letter-spacing:-.02em}
-.plans-grp small{font-size:15px;font-weight:400;color:var(--mu-l);letter-spacing:0}
-.grp-cta{margin-top:16px;align-self:flex-start}
-#planos{display:flex;flex-direction:column}
 .float.oculto{opacity:0;pointer-events:none;transform:translateY(12px)}
 .foot-links{list-style:none;margin:0;padding:18px 0 0;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px}
 .foot-links a{color:var(--mu-d);text-decoration:none}.foot-links a:hover{color:var(--tx-d)}
 @media (max-width:640px){
   #app .app-mock{display:none}
-  .app-plans{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-  .app-plan{padding:14px 10px;border-radius:18px;gap:4px;text-align:center;align-items:center}
-  .app-plan strong{font-size:21px}
-  .app-plan p{font-size:11.5px;line-height:1.35}
-  .app-plan .tag{align-self:center;font-size:9px;padding:2px 7px}
-  .app-plan .eco{align-self:center;font-size:10.5px;padding:2px 7px}
-  .app-plan small{font-size:10.5px}
   .app-list{font-size:14.5px}
 }
 </style>
@@ -603,7 +590,7 @@ footer{border-top:1px solid var(--line-d)}
     <li><a href="#ramos" data-close style="transition-delay:.12s"><span class="n">03</span><span><b>Ramos</b><small>Moda, mercado, farmácia, pet e mais</small></span></a></li>
     <li><a href="#enviar" data-close style="transition-delay:.16s"><span class="n">04</span><span><b>Como começar</b><small>Diagnóstico grátis em 48 horas</small></span></a></li>
     <li><a href="#app" data-close style="transition-delay:.18s"><span class="n">05</span><span><b>Teste grátis</b><small>Giro App · 7 dias, sem cartão</small></span></a></li>
-    <li><a href="#planos" data-close style="transition-delay:.2s"><span class="n">06</span><span><b>Planos</b><small>A partir de R$ 1.700, pagamento único</small></span></a></li>
+    <li><a href="#planos" data-close style="transition-delay:.2s"><span class="n">06</span><span><b>Planos</b><small>App a partir de R$ 37/mês · sob medida R$ 1.990</small></span></a></li>
     <li><a href="#duvidas" data-close style="transition-delay:.24s"><span class="n">07</span><span><b>Dúvidas</b><small>Sistema, dados, treinamento</small></span></a></li>
   </ul>
   <div class="sheet-cta">
@@ -841,69 +828,73 @@ footer{border-top:1px solid var(--line-d)}
     
   </section>
 
+  <!-- ================= DEPOIMENTOS ================= -->
+  <section class="sec wrap" id="depoimentos">
+    <div class="sec-head">
+      <span class="kicker" style="color:var(--em-d)" data-reveal>Lançamento</span>
+      <h2 class="h2" data-reveal="2">O primeiro depoimento pode ser <span class="it">da sua loja.</span></h2>
+      <p class="lead" style="color:var(--mu-l)" data-reveal="3">O Giro está começando, e a gente prefere não inventar elogio. Por isso abrimos <b style="color:var(--tx-l)">5 vagas de lançamento</b>: você paga 30% a menos no painel sob medida e, se gostar do resultado, conta aqui como foi.</p>
+    </div>
+    <!-- Os cartões são montados pelo script (lista DEPOIMENTOS e VAGAS_LIVRES). Este é o conteúdo para quem está sem JavaScript. -->
+    <div class="dep" id="dep" data-reveal>
+      <div class="dep-slot"><span class="dep-n">1</span><b>Vaga aberta</b><small>30% a menos no painel sob medida</small></div>
+      <div class="dep-slot"><span class="dep-n">2</span><b>Vaga aberta</b><small>30% a menos no painel sob medida</small></div>
+      <div class="dep-slot"><span class="dep-n">3</span><b>Vaga aberta</b><small>30% a menos no painel sob medida</small></div>
+      <div class="dep-slot"><span class="dep-n">4</span><b>Vaga aberta</b><small>30% a menos no painel sob medida</small></div>
+      <div class="dep-slot"><span class="dep-n">5</span><b>Vaga aberta</b><small>30% a menos no painel sob medida</small></div>
+    </div>
+    <div class="seg-cta" id="depCta" data-reveal><p id="depTxt"><b>Restam 5 vagas.</b> Comece pelo diagnóstico grátis: se o painel não fizer sentido para a sua loja, você não paga nada.</p><a class="btn btn-amber js-wa" data-msg="Olá! Quero uma das 5 vagas de lançamento do Giro." href="#contato">Quero uma das vagas</a></div>
+  </section>
+
   <!-- ================= PLANOS ================= -->
   <section class="sec wrap" id="planos">
-    <div class="plans-head">
-      <div class="sec-head" style="margin:0;flex:999 1 520px">
-        <span class="kicker" data-reveal>Planos</span>
-        <h2 class="h2" data-reveal="2">Dois jeitos de <span class="it">fazer sua loja girar.</span></h2>
-      </div>
-      
+    <div class="sec-head">
+      <span class="kicker" data-reveal>Planos</span>
+      <h2 class="h2" data-reveal="2">Comece de graça. <span class="it">Escolha depois.</span></h2>
+      <p class="lead" style="color:var(--mu-l)" data-reveal="3">Todo mundo começa pelo diagnóstico grátis ou pelos 7 dias de teste do app. Depois você decide: fazer sozinho ou deixar com a gente.</p>
     </div>
 
+    <ol class="path" data-reveal>
+      <li><span>1</span><div><b>Teste sem pagar</b><small>Diagnóstico grátis em 48 horas ou 7 dias de app</small></div></li>
+      <li><span>2</span><div><b>Escolha o caminho</b><small>Você mesmo no app, ou a gente monta tudo</small></div></li>
+      <li><span>3</span><div><b>Sua loja gira</b><small>Menos estoque parado, menos venda perdida</small></div></li>
+    </ol>
 
-    <div class="plans-grp" data-reveal><span class="grp-k">Faça você mesmo</span><h3>Giro App <small>· você sobe a planilha e vê na hora</small></h3></div>
-    <div class="app-plans">
-      <div class="app-plan"><small>Mensal</small><strong>R$ 49,90</strong><p>por mês · painel completo</p></div>
-      <div class="app-plan hl"><span class="tag">mais escolhido</span><small>Semestral</small><strong>R$ 249</strong><p>R$ 41,50/mês · + PDF e mensagens</p><span class="eco">economize 17%</span></div>
-      <div class="app-plan"><small>Anual</small><strong>R$ 449</strong><p>R$ 37,42/mês · + PDF e mensagens</p><span class="eco">economize 25%</span></div>
-    </div>
-    <a class="btn btn-amber grp-cta" href="#app">Começar 7 dias grátis</a>
-    <div class="plans-grp" data-reveal style="margin-top:46px"><span class="grp-k">Feito para você</span><h3>Painel sob medida <small>· a gente organiza, monta e treina na sua loja</small></h3></div>
-    <div class="plan-tabs" role="tablist" aria-label="Planos" id="planTabs">
-      <button type="button" role="tab" aria-controls="plans" data-p="ess" aria-selected="false">Essencial</button><button type="button" role="tab" aria-controls="plans" data-p="loja" aria-selected="true">Loja Completa</button><button type="button" role="tab" aria-controls="plans" data-p="rede" aria-selected="false">Rede</button>
-    </div>
-    <div class="plans" id="plans" data-active="loja">
-      <article class="plan" data-p="ess" data-reveal>
-        <div><h3>Essencial</h3><p class="sub">Para quem quer começar a enxergar</p></div>
-        <div><div class="price">R$ 1.700</div><p class="price-note">pagamento único</p></div>
+    <div class="pick">
+      <article class="plan" data-reveal>
+        <div><span class="grp-k">Faça você mesmo</span><h3 style="margin-top:6px">Giro App</h3><p class="sub">Você sobe a planilha e vê os números na hora.</p></div>
+        <div class="seg-ctl" role="group" aria-label="Período do Giro App" data-ctl="app">
+          <button type="button" data-v="m" aria-pressed="false">Mensal</button><button type="button" data-v="s" aria-pressed="false">Semestral</button><button type="button" data-v="a" aria-pressed="true">Anual</button>
+        </div>
+        <div aria-live="polite"><div class="price"><span id="appPrice">R$ 37,42</span><small>/mês</small></div><p class="price-note" id="appNote">R$ 449 por ano · economize 25%</p></div>
         <ul>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>1 planilha de vendas organizada</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Faturamento, ticket médio e dias fortes</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Ranking de produtos</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Acesso pelo celular</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Produtos parados, validade e o que vai faltar</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Clientes sumidos e simulador de desconto</li>
+          <li id="appExtra"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Relatório em PDF e mensagens prontas no WhatsApp</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Não renova sozinho: sem surpresa no cartão</li>
         </ul>
-        <a class="btn btn-line js-wa" data-msg="Olá! Tenho interesse no plano Essencial." href="#contato">Começar pelo Essencial</a>
+        <a class="btn btn-line" href="#app">Testar 7 dias grátis</a>
       </article>
-      <div class="plan-hl" data-p="loja" data-reveal="2">
+
+      <div class="plan-hl" data-reveal="2">
         <article class="plan">
-          <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><h3>Loja Completa</h3><p class="sub">Ideal para uma loja</p></div><span class="rec">Recomendado</span></div>
-          <div><div class="price">R$ 2.930</div><p class="price-note">pagamento único</p></div>
-          <ul>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Vendas, estoque e equipe juntos</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Destaque de produtos dormindo e em falta</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Ranking de vendedores e formas de pagamento</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Treinamento presencial de 1 hora</li>
+          <div style="display:flex;flex-wrap:wrap-reverse;justify-content:space-between;gap:10px;align-items:flex-start"><div style="flex:1 1 220px"><span class="grp-k" style="color:var(--em)">Feito para você</span><h3 style="margin-top:6px">Painel sob medida</h3><p class="sub">A gente organiza a planilha, monta o painel e treina sua equipe.</p></div><span class="rec">Lançamento −30%</span></div>
+          <div class="seg-ctl dark" role="group" aria-label="Tamanho da operação" data-ctl="sob">
+            <button type="button" data-v="loja" aria-pressed="true">1 loja</button><button type="button" data-v="rede" aria-pressed="false">Mais de uma loja</button>
+          </div>
+          <div aria-live="polite"><div class="price"><span id="sobPrice">R$ 1.990</span></div><p class="price-note" id="sobNote">pagamento único · <b style="color:var(--am)">R$ 1.393</b> para os 5 primeiros</p></div>
+          <ul id="sobList">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Planilha organizada e um modelo fácil de preencher</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Vendas, estoque e equipe na mesma tela do celular</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Produtos dormindo, em falta e ranking de vendedores</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#34D399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="sobTrein">Treinamento presencial de 1 hora, com vídeo e guia</span></li>
           </ul>
-          <a class="btn btn-amber js-wa" data-msg="Olá! Tenho interesse no plano Loja Completa." href="#contato">Quero a Loja Completa</a>
+          <a class="btn btn-amber js-wa" id="sobCta" data-msg="Olá! Tenho interesse no painel sob medida para a minha loja." href="#contato">Quero o painel sob medida</a>
+          <p class="pk-extra">Depois, se quiser: <b>acompanhamento mensal por R$ 197/mês</b>, com atualizações, ajustes e um indicador novo por mês.</p>
         </article>
       </div>
-      <article class="plan" data-p="rede" data-reveal="3">
-        <div><h3>Rede</h3><p class="sub">Mais de uma loja ou várias fontes</p></div>
-        <div><div class="price">R$ 4.675</div><p class="price-note">pagamento único</p></div>
-        <ul>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Tudo da Loja Completa</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Sistema e planilhas na mesma tela</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Comparação entre lojas</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#047857" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Treinamento presencial de 2 horas</li>
-        </ul>
-        <a class="btn btn-line js-wa" data-msg="Olá! Quero falar sobre o plano Rede." href="#contato">Falar sobre a Rede</a>
-      </article>
     </div>
-    <div class="monthly" data-reveal>
-      <div><h3>Acompanhamento mensal (opcional)</h3><p>Atualizações, ajustes e um indicador novo por mês, para o painel crescer junto com a loja.</p></div>
-      <strong>R$ 476<small>/mês</small></strong>
-    </div>
+    <p class="disc">Preços em reais. O desconto de lançamento vale para os 5 primeiros lojistas que fecharem o painel sob medida.</p>
   </section>
 
   <!-- ================= DÚVIDAS ================= -->
@@ -916,7 +907,7 @@ footer{border-top:1px solid var(--line-d)}
       <details><summary>Meus dados ficam seguros?</summary><p>Sim. O painel abre só para quem você autorizar. Seus dados são usados só para montar o seu painel, não são compartilhados com ninguém e são apagados quando você pedir, como prevê a LGPD.</p></details>
       <details><summary>Como é o treinamento?</summary><p>Presencial, na sua loja. Mostramos como lançar as vendas, como ler o painel e o que fazer com cada número. Você também recebe um vídeo e um guia impresso para consultar depois.</p></details>
       <details><summary>Quanto tempo leva?</summary><p>O diagnóstico grátis sai em até 48 horas. O painel completo fica pronto entre 7 e 15 dias, conforme o plano.</p></details>
-      <details><summary>Qual a diferença entre o painel sob medida e o Giro App?</summary><p>No painel sob medida, a gente organiza a sua planilha, monta o painel e treina você na loja. O Giro App é o caminho rápido: você mesmo sobe a planilha e vê os números na hora, por assinatura a partir de R$ 49,90 por mês.</p></details>
+      <details><summary>Qual a diferença entre o painel sob medida e o Giro App?</summary><p>No painel sob medida, a gente organiza a sua planilha, monta o painel e treina você na loja. O Giro App é o caminho rápido: você mesmo sobe a planilha e vê os números na hora, por assinatura de R$ 49,90 por mês, ou menos nos planos semestral e anual.</p></details>
       <details><summary>Como funciona o teste grátis do app?</summary><p>Você coloca seu e-mail, recebe um código de acesso e já entra. São 7 dias com tudo liberado, sem cartão e sem compromisso. Depois, se quiser continuar, escolhe um plano.</p></details>
       <details><summary>Atendem a minha cidade?</summary><p>Estamos em Taboão da Serra e Sorocaba (SP). O painel e o diagnóstico funcionam a distância para qualquer cidade; o treinamento presencial combinamos caso a caso.</p></details>
       </div>
@@ -934,7 +925,7 @@ footer{border-top:1px solid var(--line-d)}
       
     </svg><svg width="56" height="56" aria-hidden="true" style="position:absolute;left:38px;top:38px" viewBox="60 38 392 392"><defs><linearGradient id="gaSeal" x1="0" y1="1" x2="1" y2="0" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#047857"/><stop offset=".55" stop-color="#10B981"/><stop offset="1" stop-color="#6EE7B7"/></linearGradient></defs><path d="M352.4 141.1 A150 150 0 1 1 282.0 108.3" fill="none" stroke="url(#gaSeal)" stroke-width="36" stroke-linecap="round"/><rect class="" x="180.4" y="278.0" width="38" height="78" rx="16" fill="#F4F2EE"/><rect class="" x="240.4" y="224.0" width="38" height="132" rx="16" fill="#F4F2EE"/><rect x="300.4" y="120" width="38" height="236" rx="16" fill="#FBBF24"/><path d="M319.4 58 L363.4 124 L275.4 124 Z" fill="#FBBF24" stroke="#FBBF24" stroke-width="10" stroke-linejoin="round"/></svg></div>
     <h2 data-reveal>Mande sua planilha. Em até 15 dias, sua loja <span class="it" style="color:var(--em)">gira.</span></h2>
-    <p data-reveal="2">Lançamento: os <strong>5 primeiros lojistas pagam 30% a menos</strong> em troca de um depoimento sobre o resultado.</p>
+    <p data-reveal="2">Lançamento: os <strong>5 primeiros lojistas pagam 30% a menos</strong> no painel sob medida em troca de um depoimento sobre o resultado.</p>
     <a class="shine js-wa" data-msg="Olá! Vim pelo site do Giro e quero saber mais." href="#contato" data-reveal="3" aria-label="Conversar com o Giro no WhatsApp"><span><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" stroke="#34D399" stroke-width="2" fill="none" stroke-linejoin="round"/><circle cx="8.5" cy="10.5" r="1.2" fill="#34D399"/><circle cx="12" cy="10.5" r="1.2" fill="#34D399"/><circle cx="15.5" cy="10.5" r="1.2" fill="#34D399"/></svg>Chamar no WhatsApp</span></a>
     <span class="sign">Diagnóstico grátis, sem compromisso.</span>
     <noscript><p class="sign">Sem JavaScript? Fale com a gente por e-mail: <a href="mailto:marcos7ut@gmail.com">marcos7ut@gmail.com</a></p></noscript>
@@ -964,6 +955,14 @@ footer{border-top:1px solid var(--line-d)}
   'use strict';
   /* ===== Configuração: troque aqui se mudar o número ===== */
   const WHATS = '5511954810927';
+
+  /* ===== Depoimentos: só coloque aqui depoimentos REAIS, com autorização do cliente =====
+     Exemplo de item:
+       { texto: 'Descobri que tinha R$ 12 mil parados em calça jeans.', resultado: 'R$ 12 mil em estoque parado encontrado',
+         nome: 'Ana Souza', loja: 'Loja de moda', cidade: 'Taboão da Serra, SP' },
+     VAGAS_LIVRES: quantas das 5 vagas de lançamento ainda estão abertas. */
+  const DEPOIMENTOS = [];
+  const VAGAS_LIVRES = 5;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
   const $ = (s, r = document) => r.querySelector(s);
@@ -1135,12 +1134,56 @@ footer{border-top:1px solid var(--line-d)}
   });
   show(0);
 
-  /* Planos: abas no celular */
-  const plans = $('#plans');
-  document.querySelectorAll('#planTabs button').forEach(b => b.addEventListener('click', () => {
-    plans.dataset.active = b.dataset.p;
-    document.querySelectorAll('#planTabs button').forEach(x => x.setAttribute('aria-selected', x === b));
-  }));
+  /* Depoimentos e vagas de lançamento */
+  const dep = $('#dep');
+  if (dep) {
+    const total = 5, livres = Math.max(0, Math.min(VAGAS_LIVRES, total - DEPOIMENTOS.length));
+    dep.innerHTML = '';
+    DEPOIMENTOS.forEach(d => {
+      const f = document.createElement('figure'); f.className = 'dep-card';
+      const q = document.createElement('blockquote'); q.textContent = d.texto;
+      const r = document.createElement('span'); r.className = 'dep-res'; r.textContent = d.resultado || '';
+      const c = document.createElement('figcaption'); const n = document.createElement('b'); n.textContent = d.nome;
+      c.append(n, ` · ${d.loja} · ${d.cidade}`);
+      f.append(q); if (d.resultado) f.append(r); f.append(c); dep.append(f);
+    });
+    for (let i = DEPOIMENTOS.length; i < total; i++) {
+      const aberta = i >= total - livres;
+      const el = document.createElement('div'); el.className = 'dep-slot' + (aberta ? '' : ' taken');
+      el.innerHTML = `<span class="dep-n">${i + 1}</span><b>${aberta ? 'Vaga aberta' : 'Vaga preenchida'}</b><small>${aberta ? '30% a menos no painel sob medida' : 'Resultado em breve'}</small>`;
+      dep.append(el);
+    }
+    $('#depTxt').innerHTML = livres > 0
+      ? `<b>${livres === 1 ? 'Resta 1 vaga.' : `Restam ${livres} vagas.`}</b> Comece pelo diagnóstico grátis: se o painel não fizer sentido para a sua loja, você não paga nada.`
+      : '<b>As vagas de lançamento acabaram.</b> O diagnóstico grátis continua valendo para qualquer loja.';
+  }
+
+  /* Planos: seletores de período (app) e tamanho (sob medida) */
+  const brl2 = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+  const APP = {
+    m: { preco: 49.90, nota: 'cobrado todo mês · cancele quando quiser', extra: false },
+    s: { preco: 249 / 6, nota: 'R$ 249 a cada 6 meses · economize 17%', extra: true },
+    a: { preco: 449 / 12, nota: 'R$ 449 por ano · economize 25%', extra: true }
+  };
+  const SOB = {
+    loja: { preco: 1990, trein: 'Treinamento presencial de 1 hora, com vídeo e guia', msg: 'Olá! Tenho interesse no painel sob medida para a minha loja.' },
+    rede: { preco: 3990, trein: 'Comparação entre lojas e treinamento presencial de 2 horas', msg: 'Olá! Tenho mais de uma loja e quero saber do painel sob medida.' }
+  };
+  const ctl = (name, fn) => {
+    const g = document.querySelector(`[data-ctl="${name}"]`); if (!g) return;
+    g.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+      g.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); fn(b.dataset.v);
+    }));
+  };
+  ctl('app', v => {
+    const o = APP[v]; $('#appPrice').textContent = brl2.format(o.preco); $('#appNote').textContent = o.nota;
+    $('#appExtra').style.display = o.extra ? '' : 'none';
+  });
+  ctl('sob', v => {
+    const o = SOB[v]; $('#sobPrice').textContent = brl.format(o.preco); $('#sobTrein').textContent = o.trein;
+    $('#sobNote').innerHTML = `pagamento único · <b style="color:var(--am)">${brl.format(Math.round(o.preco * 0.7))}</b> para os 5 primeiros`;
+    $('#sobCta').href = `https://wa.me/${WHATS}?text=${encodeURIComponent(o.msg)}`;
+  });
 
   /* Menu do celular */
   const menu = $('#menuM'), burger = $('#burger');
